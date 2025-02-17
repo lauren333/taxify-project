@@ -12,7 +12,7 @@ Free vehicles are moving along the city, ready to pick up a new ride. In-service
 Vehicles in a ride are moving to the user drop off location.
 
 When a user requests a ride, the application finds the closest free vehicle to the user location.
-Each service has a pickup and a drop off location. The rate for riding one city block is  euros for taxis and  euros for shuttles.
+Each service has a pickup and a drop off location. The rate for riding one city block is 2 euros for taxis and 1.5 euros for shuttles.
 Users can rate the service provided by the driver giving it  to  stars. Users can cancel a service if the vehicle has
 not reached the pickup location.
 The application keeps track of the statistics of each vehicle. This includes the total services, the total distance traveled, total billing, and the average user rating. When Taxify receives a service request from a user, it books the closest vehicle to the user location and sets the status of the vehicle to in-service. When a vehicle arrives at a pickup location, the driver starts the ride, and the company receives a notification. Similarly, when a user is dropped off, the vehicle is free, and the company is notified.
