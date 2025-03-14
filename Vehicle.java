@@ -99,16 +99,19 @@ public abstract class Vehicle implements IVehicle {
     @Override
     // NEW CODE Sp2 // notify the company that the vehicle is at the pickup location and start the service
     public void notifyArrivalAtPickupLocation() {
-        company.arrivedAtDropoffLocation(this); //this refers to current vehicle, aka the current instance of the class
-        startService();
+        //UPDATE SPRINT 3 // WE MUST HAVE THIS.COMPANY SINCE WE WANT THE CURRENT INSTANCE 
+        this.company.arrivedAtPickupLocation(this); 
+        //(this)refers to current vehicle, 
+        //aka the current instance of the class its being passed into the method so we can update the company 
+        this.startService();
     }
       
     
     @Override
     // NEW CODE Sp2 // notify the company that the vehicle is at the drop off location and end the service
     public void notifyArrivalAtDropoffLocation() {
-        company.arrivedAtPickupLocation(this);
-        endService();
+        this.company.arrivedAtDropoffLocation(this);
+        this.endService();
     }
      
     
@@ -135,8 +138,10 @@ public abstract class Vehicle implements IVehicle {
                 ILocation origin = this.service.getPickupLocation();
                 ILocation destination = this.service.getDropoffLocation();
                 if (this.location.getX() == origin.getX() && this.location.getY() == origin.getY()) {
+                    System.out.println("Arrived at Pickup Location");
                     notifyArrivalAtPickupLocation();
                 } else if (this.location.getX() == destination.getX() && this.location.getY() == destination.getY()) {
+                    System.out.println("Arrived at Dropoff Location");
                     notifyArrivalAtDropoffLocation();
                 }        
             }

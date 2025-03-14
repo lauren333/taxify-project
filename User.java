@@ -76,6 +76,7 @@ public class User implements IUser {
     
     @Override
     public String toString() {
-        return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName());
+        return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName() + " " + this.getGender() + " " + this.getBirthDate());
+        //ORIGINAL CODE: return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName());
     }
 }
