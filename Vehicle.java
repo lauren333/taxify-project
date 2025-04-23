@@ -154,10 +154,6 @@ public abstract class Vehicle implements IVehicle {
     public void move() {
         // get the next location from the driving route
         this.location = this.route.getNextLocation(); 
-
-        //if (this.user != null) {
-            //this.user.setLocation(this.location); // Update user's location as vehicle moves
-        //}
             
         // if the route has more locations the vehicle continues its route, otherwise the vehicle has arrived to a pickup or drop off location
         if (!this.route.hasLocations()) {

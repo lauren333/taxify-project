@@ -25,8 +25,6 @@ public interface IMicroMobilityVehicle{
     String toString();
     void move(); 
     boolean isFree();
-    //void setUser(IUser user); 
-    //IUser getUser(); 
     IStatistics getStatistics(); 
 }
 

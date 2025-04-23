@@ -81,24 +81,23 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
 
     public void arrivedAtPickupLocation2(IMicroMobilityVehicle microMobilityVehicle) {
         IService service = microMobilityVehicle.getService(); 
-        int user = service.getUser().getId(); 
-        notifyObserver(user + " has arrived at the pickup location for " + microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId());
+        notifyObserver(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility vehicle " + microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId());
     }
-
+    
     public void arrivedAtDropoffLocation2(IMicroMobilityVehicle microMobilityVehicle) {
         IService service = microMobilityVehicle.getService();       
         int user = service.getUser().getId();
         int userIndex = findUserIndex(user);
-
+    
         // Let the user rate the ride and end service
         this.users.get(userIndex).rateService(service);
         this.users.get(userIndex).setService(false);
-
+    
         // update totalServices counter
         this.totalServices--;
-        notifyObserver(microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId() + " parked by user " + user + " at location " + microMobilityVehicle.getLocation().toString());
-    } //*/
-
+        notifyObserver(microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId() + " arrived at destination and is parked by " + service.getUser().getFirstName() + ", user "+ user + ", at location " + microMobilityVehicle.getLocation().toString());
+    }
+    
         
     @Override
     public void addObserver(IObserver observer) {
@@ -362,4 +361,3 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     }
     
 }
-

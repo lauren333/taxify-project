@@ -87,17 +87,16 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
     public void chargeBattery() {
         if (this.batteryLevel < 100) {
             this.batteryLevel = 100;
-            System.out.println("Vehicle fully charged.");
+            System.out.println(this.getClass().getSimpleName() + this.id + " fully charged.");
         } else {
-            System.out.println("Battery is already full.");
+            System.out.println(this.getClass().getSimpleName() + this.id + " is already full.");
         }
     }    
 
     //pickup here means reserved
     public void reserve(IService service) {
         this.service = service; 
-        //check whats getpickup location doing here
-        //and creating route
+        //create a route but from the user, to the location of the vehicle
         this.destination = service.getPickupLocation();
         this.route = new Route(this.destination,this.location); 
         reserved = true;
@@ -105,20 +104,8 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         //System.out.println("Reserved. Your Fee for Reservation: " + RESERVATION_FEE + "€");
     }
   
-    //pickup here means reserved
     @Override
     public void startRide() {
-        //if (status == VehicleStatus.SERVICE || status == VehicleStatus.PICKUP) { 
-            //throw new IllegalStateException("Cannot start ride. Vehicle is in service.");
-        //}
-        //if (this.batteryLevel == 0){
-            //throw new IllegalStateException("Cannot start ride. Vehicle not charged.");
-        //}
-        // Ensure the user has arrived at the vehicle before transitioning to service
-       //if (!this.user.hasArrivedAtVehicle(this)) {
-            //throw new IllegalStateException("User has not arrived at the vehicle yet. Cannot start the ride.");
-        //}
-
         this.destination = service.getDropoffLocation(); 
         this.route = new Route(this.location, this.destination); 
         status = VehicleStatus.SERVICE;
@@ -139,10 +126,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         }
         // set service to null, and status to "free"
         this.service = null;
-        //this.destination = ApplicationLibrary.randomLocation(this.location);
-        //this.route = new Route(this.location, this.destination);
         this.status = VehicleStatus.FREE;
-        this.ridecount++; // ← THIS increments for this specific vehicle
     }
     
     @Override
@@ -158,7 +142,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
 
         // Reduce battery level after the ride is complete
         this.batteryLevel -= 25;
-        System.out.println("Battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
+        System.out.println(this.getClass().getSimpleName() + this.id + " battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
 
         // Ensure battery doesn't go below 0%
         if (this.batteryLevel < 0) {
@@ -166,16 +150,17 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         } 
         // Ensure the user's location is updated to the destination when the ride ends
     }
-  
+
+    @Override
     public void move() {
         // Handle PICKUP status (user walking to vehicle)
         if (this.status == VehicleStatus.PICKUP) {
             if (this.route.hasLocations()) {
                 // Simulate user approaching the vehicle
-                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", is walking to micro-mobility vehicle " + this.id);
+                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", is walking to micro-mobility vehicle " + this.getClass().getSimpleName() + " " + this.id);
                 this.route.getNextLocation(); // just progress the route
             } else {
-                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility vehicle " + this.id);
+                //System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility vehicle " + this.getClass().getSimpleName() + " " + this.id);
                 notifyArrivalAtPickupLocation(); // triggers startRide()
             }
             return; // don’t proceed to SERVICE behavior yet
@@ -184,9 +169,8 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         if (this.status == VehicleStatus.SERVICE) {
             if (this.route.hasLocations()) {
                 this.location = this.route.getNextLocation();
-                System.out.println("Vehicle " + this.id + " driven by " + service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", moving to: " + this.location);
+                //System.out.println("Vehicle " + this.id + " driven by " + service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", moving to: " + this.location);
             }
-
             if (!this.route.hasLocations()) {
                 notifyArrivalAtDropoffLocation();
             }
@@ -194,13 +178,14 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
 
         // FREE: do nothing
 
+        /*  
         // If we have reached the destination 
         if (!this.route.hasLocations()) {
             ILocation dropoff = this.service.getDropoffLocation();
             if (this.location.getX() == dropoff.getX() && this.location.getY() == dropoff.getY()) {
                 notifyArrivalAtDropoffLocation();
             }
-        }
+        } */
     }
 
     @Override
@@ -216,9 +201,9 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
     @Override
     public String toString() { //updated in sprint 4 to show whos driving 
         return (this.status == VehicleStatus.SERVICE)
-        ? this.id + ": " + service.getUser().getFirstName() + " " + service.getUser().getLastName() + " at " + this.location + " is driving themself to " + this.destination
+        ? this.id + ": " + service.getUser().getFirstName() + " " + service.getUser().getLastName() + ", User " + service.getUser().getId() + ", at " + this.location + " is driving themself to " + this.destination
         : (this.status == VehicleStatus.PICKUP)
-            ? this.id + ": reserved for user " + service.getUser().getFirstName() + " " + service.getUser().getLastName()
+            ? this.id + ": reserved for user " + service.getUser().getId() + ", " + service.getUser().getFirstName() + " " + service.getUser().getLastName()
             : this.id + ": vehicle is idle at " + this.location;
     }   
 

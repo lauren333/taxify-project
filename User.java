@@ -79,7 +79,7 @@ public class User implements IUser {
 
     @Override
     public boolean isFemale() { //new from sprint 4 to help calculate if appplicable for Pink Service 
-        return (Character.toUpperCase(this.getGender()) == 'F') ? true : false;  
+        return Character.toUpperCase(this.getGender()) == 'F';
     }
 
     @Override
@@ -92,7 +92,7 @@ public class User implements IUser {
 
     @Override
     public boolean getPinkServiceEligibility() { //new from sprint 4: applicable if women or child 
-        return  (this.isChild() || this.isFemale()) ?  true: false;  
+        return  (this.isChild() || this.isFemale()) ?  true : false;  
     }
 
     @Override
