@@ -64,16 +64,6 @@ public class User implements IUser {
         this.company = company;
     }
 
-    /* 
-    @Override
-    public ILocation getLocation() {
-        return this.location;
-    } */
-
-    public void setLocation(ILocation location) {
-        this.location = location;
-    }
-    
     @Override
     public void requestService() {
         ILocation origin = this.location;
@@ -136,10 +126,6 @@ public class User implements IUser {
         //ORIGINAL CODE: return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName());
     }
 
-
-    //NEW FROM SPRINT 5 
-
-      /*  
     @Override
     public void requestMicroMobilityService() {
         ILocation origin = this.location;
@@ -147,38 +133,5 @@ public class User implements IUser {
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.provideMicroMobilityService(this.id, origin, destination);    
     }
-
-    public boolean hasArrivedAtVehicle(IMicroMobilityVehicle microMobilityVehicle){ 
-        return this.getLocation().equals(microMobilityVehicle.getLocation());
-    }
-
-    @Override
-    public void walkToMicroMobilityVehicle(IMicroMobilityVehicle microMobilityVehicle) {
-        ILocation currentLocation = this.getLocation(); // user's origin
-        ILocation vehicleLocation = microMobilityVehicle.getLocation(); // vehicle's position when reserved
-
-        //ILocation currentLocation = microMobilityVehicle.getService().getPickupLocation(); // user's origin
-        //ILocation vehicleLocation = microMobilityVehicle.getLocation(); // vehicle's position when reserved
-
-        // simulate walking by creating a route and updating step-by-step
-        IRoute walkingRoute = new Route(currentLocation, vehicleLocation);
-
-        // Get the type of micromobility vehicle
-        String vehicleType = microMobilityVehicle.getClass().getSimpleName();
-        System.out.println("User " + this.firstName + " " + this.lastName + " is walking to their " + vehicleType + " located at " + vehicleLocation);
-
-        while (walkingRoute.hasLocations()) {
-            currentLocation = walkingRoute.getNextLocation();
-            this.setLocation(currentLocation); // Update user's actual location
-            System.out.println("User " + this.firstName + " " + this.lastName + "walking to " + vehicleType + " Vehicle, now at: " + currentLocation);
-        }
-        // Ensure final position matches vehicle's location
-        this.setLocation(vehicleLocation);
-
-        System.out.println("User " + this.firstName + " " + this.lastName + " has arrived at the " + vehicleType + ".");
-        // Once user has arrived at the vehicle's location, notify the company
-        microMobilityVehicle.notifyArrivalAtPickupLocation(); // triggers startRide()
-    }*/
-
 
 }

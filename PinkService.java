@@ -9,6 +9,6 @@ public class PinkService extends Service {
     
     @Override
     public String getServiceType(){
-        return "Pink";
+        return "Pink Service";
     }
 }

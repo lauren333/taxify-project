@@ -2,21 +2,21 @@ package project.taxify;
 import java.util.List;
 //SPRINT 3: NEW CLASS
 
-//import project.taxify.MicroMobility.IMicroMobilityVehicle;
+import project.taxify.MicroMobility.IMicroMobilityVehicle;
 
 public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     private ITaxiCompany company;
     private List<IUser> users;
     private List<IVehicle> vehicles;
-    //private List<IMicroMobilityVehicle> microMobilityVehicles; 
+    private List<IMicroMobilityVehicle> microMobilityVehicles; 
     
-    public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles) {
+    //public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles) {
 
-    //public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
+    public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
         this.company = company;
         this.users = users;
         this.vehicles = vehicles;
-        //this.microMobilityVehicles = microMobilityVehicles;
+        this.microMobilityVehicles = microMobilityVehicles;
     }
     
     @Override
@@ -27,11 +27,11 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             System.out.println(vehicle.toString());
         }   
 
-        /* 
+        ///* 
         System.out.println("\n--" + this.company.getName() + " status Micro-Mobilities--");
         for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
             System.out.println(microMobilityVehicle.toString());
-        }    */
+        }    //*/
     }
     
     @Override
@@ -51,7 +51,7 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
                 }         
         System.out.println(s);   
 
-        /*
+        ///*
         String ss = "\n---" + this.company.getName() + " Micro-Mobility statistics--";
         for (IMicroMobilityVehicle mmVehicle : this.microMobilityVehicles) {
             ss += "\n" +
@@ -64,22 +64,22 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             String.format("%-4.1f", mmVehicle.getStatistics().getStars()) + " stars"; 
         }
         System.out.println(ss);  
-        */     
+        //*/     
     }    
 
     @Override
     public void update() {
         // move vehicles to their next location
         for (IVehicle vehicle : this.vehicles) {
-               vehicle.move();
+            vehicle.move();
         }
 
-        /*  
+        ///*  
         // Loop through micro-mobility vehicles (e.g., E-scooters, E-bikes)
         for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
             microMobilityVehicle.move(); 
         } 
-        */
+        //*/
     }
   
     @Override
@@ -97,6 +97,10 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
                 user.requestSilentService();
                 break;
             }
+            if (ApplicationLibrary.rand() % 3 == 0){
+                user.requestMicroMobilityService();
+                break;
+            } 
             user.requestService();
             break;
         }

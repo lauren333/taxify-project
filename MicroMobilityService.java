@@ -7,6 +7,6 @@ public class MicroMobilityService extends Service {
 
     @Override
     public String getServiceType() {
-        return "Micro-Mobility";
+        return "Micro-Mobility Service";
     }
 }

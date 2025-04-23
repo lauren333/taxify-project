@@ -25,11 +25,11 @@ public interface IUser {
     public boolean isChild();
 
     //new from sprint 5
-    /*  
+    ///*  
     public void requestMicroMobilityService(); 
-    public void walkToMicroMobilityVehicle(IMicroMobilityVehicle vehicle);
-    public void setLocation(ILocation location); 
-    public ILocation getLocation();
-    public boolean hasArrivedAtVehicle(IMicroMobilityVehicle microVehicle); 
-    */
+    //public void walkToMicroMobilityVehicle(IMicroMobilityVehicle vehicle);
+    //public void setLocation(ILocation location); 
+    //public ILocation getLocation();
+    //public boolean hasArrivedAtVehicle(IMicroMobilityVehicle microVehicle); 
+    //*/
 }

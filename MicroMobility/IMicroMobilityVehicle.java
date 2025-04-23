@@ -4,7 +4,7 @@ import project.taxify.IService;
 import project.taxify.IStatistics;
 import project.taxify.VehicleStatus;
 import project.taxify.ITaxiCompany;
-import project.taxify.IUser;
+//import project.taxify.IUser;
 
 public interface IMicroMobilityVehicle{
     int getId();
@@ -21,12 +21,12 @@ public interface IMicroMobilityVehicle{
     void notifyArrivalAtPickupLocation();
     void notifyArrivalAtDropoffLocation();
     double calculateCost();
-    //void setLocation(ILocation location);
+    void setLocation(ILocation location);
     String toString();
     void move(); 
     boolean isFree();
     //void setUser(IUser user); 
-    IUser getUser(); 
+    //IUser getUser(); 
     IStatistics getStatistics(); 
 }
 

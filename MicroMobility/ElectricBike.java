@@ -11,32 +11,39 @@ public class ElectricBike extends MicroMobilityVehicle {
     }
 
     @Override
-    public void move() {
-        // Scooter-specific move logic
-        if (this.status != VehicleStatus.SERVICE) {
-            return; // Simply do nothing if not in service
+    public void startRide() {
+        if (this.batteryLevel <= 25.0) {
+            System.err.println("Will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
+            this.chargeBattery();
         }
-
-        // Charge only if the vehicle is in PICKUP mode (reserved)
-        //ill do 50% here since thers no specifications on canvas
-        if (this.status == VehicleStatus.PICKUP) {
-            if (this.ridecount >= 3 || this.batteryLevel <= 50.0) {
-                this.chargeBattery();  // Charge the battery
-                System.err.println("Charging Battery, Scooters must be recharged after 3 rides, or when the battery is below or equal to 25%.");
-            }
-
-            /* 
-            // If the battery is not fully charged, charge it first
-            if (this.batteryLevel < 100) {
-                this.chargeBattery();  // Charge the battery to 100%
-                System.err.println("Charging Battery, in order to book a scooter, the battery must be fully charged.");
-            }
-             */
-        }
-        
-        super.move();  // Call the parent move logic if conditions are satisfied
+        super.startRide(); // Proceed with ride
     }
 
+    public void move() {
+    // Handle PICKUP status (user walking to vehicle)
+        if (this.status == VehicleStatus.PICKUP) {
+            if (this.route.hasLocations()) {
+                // Simulate user approaching the vehicle
+                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", is walking to micro-mobility ElectricBike " + this.id);
+                this.route.getNextLocation(); // just progress the route
+            } else {
+                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility ElectricBike " + this.id);
+                notifyArrivalAtPickupLocation(); // triggers startRide()
+            }
+            return; // don’t proceed to SERVICE behavior yet
+        }
+        // SERVICE: vehicle is in ride to drop-off
+        if (this.status == VehicleStatus.SERVICE) {
+            if (this.route.hasLocations()) {
+                this.location = this.route.getNextLocation();
+                System.out.println("ElectricBike " + this.id + " driven by" + service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", to: " + this.location);
+            }
+
+            if (!this.route.hasLocations()) {
+                notifyArrivalAtDropoffLocation();
+            }
+        }
+    } 
 
     @Override
     public double calculateCost() {

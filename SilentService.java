@@ -7,6 +7,6 @@ public class SilentService extends Service{ //new from sprint 4
 
     @Override
     public String getServiceType(){ 
-        return "Silent"; 
+        return "Silent Service"; 
     }
 }

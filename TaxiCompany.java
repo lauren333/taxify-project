@@ -1,8 +1,7 @@
 package project.taxify;
 import java.util.List;
-//import project.taxify.MicroMobility.IMicroMobilityVehicle; //sprint 5
 import java.util.ArrayList; //sprint 4
-//import project.taxify.MicroMobility.*; //sprint 5
+import project.taxify.MicroMobility.*; //sprint 5
 
 //SPRINT 3: NEW CLASS 
 
@@ -10,20 +9,19 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     private String name;
     private List<IUser> users;
     private List<IVehicle> vehicles;
-    //private List<IMicroMobilityVehicle> microMobilityVehicles; //new from sprint 5
+    private List<IMicroMobilityVehicle> microMobilityVehicles; //new from sprint 5
     private int totalServices;
     //IOBSERVER INTERFACE ENSURES ANY CLASSES IMPLEMENTENTING IT DEFINES THE updateObserver(string message) METHOD
     //WHY? IT ALLOWS DIFFERENT CLASSES TO RESPOND TO UPDATES IN THE TaxiCompany CLASS
     //taxi company is the subject and the vehciles are the observers
     private IObserver observer;
     
-    public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles) {
-
-    //public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
+    //public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles) {
+    public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
         this.name = name;
         this.users = users;
         this.vehicles = vehicles;  
-        //this.microMobilityVehicles = microMobilityVehicles;    //new from sprint 5  
+        this.microMobilityVehicles = microMobilityVehicles;    //new from sprint 5  
         this.totalServices = 0;
         
         for (IUser user : this.users) {
@@ -33,11 +31,11 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
             vehicle.setCompany(this);
         }
 
-        /* 
+        ///* 
         for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {  //new from sprint 5
             microMobilityVehicle.setCompany(this);
         }
-        */
+        //*/
 
     }
     
@@ -78,11 +76,13 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         notifyObserver(String.format("%-8s",vehicle.getClass().getSimpleName()) + vehicle.getId() + " drops off user " + user);         
     }
     
-    /* 
+    ///* 
     //NEW FOR MMVEHICLES SPRINT 5 
 
     public void arrivedAtPickupLocation2(IMicroMobilityVehicle microMobilityVehicle) {
-        notifyObserver(microMobilityVehicle.getUser().getFirstName() + " has arrived at the pickup location for " + microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId());
+        IService service = microMobilityVehicle.getService(); 
+        int user = service.getUser().getId(); 
+        notifyObserver(user + " has arrived at the pickup location for " + microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId());
     }
 
     public void arrivedAtDropoffLocation2(IMicroMobilityVehicle microMobilityVehicle) {
@@ -97,7 +97,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         // update totalServices counter
         this.totalServices--;
         notifyObserver(microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId() + " parked by user " + user + " at location " + microMobilityVehicle.getLocation().toString());
-    } */
+    } //*/
 
         
     @Override
@@ -122,7 +122,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         return -1; //no id found 
     }
 
-    /* 
+    ///* 
     //new from sprint 5 
     // Method to get a list of free micro-mobility vehicles
     private List<IMicroMobilityVehicle> listOfFreeMicroMobilityVehicles(List<IMicroMobilityVehicle> microMobilityVehicles) {
@@ -134,7 +134,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
             }
         }
         return freeVehicles;
-    } */
+    } //*/
 
     //new from sprint 4
     private List<IVehicle> listOfFreeVehicles(List<IVehicle> vehicleList){
@@ -179,7 +179,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     }
 
     //NEW FOR SPRINT 5 
-     /*
+     ///*
     private int closestMicroMobilityVehicle(List<IMicroMobilityVehicle> microMobilityVehicles, ILocation location) {
         int currentClosestDistance = Integer.MAX_VALUE;
         int closestIndex = -1;
@@ -233,7 +233,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         return false; 
     }
      
-    */ 
+    //*/ 
     //updated in sprint 4
     @Override
     public boolean provideService(int user, ILocation origin, ILocation destination) {

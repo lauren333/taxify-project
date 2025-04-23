@@ -84,12 +84,12 @@ public class TestProgram {
         System.out.println("- Taxify Shared: rides have a 20% discount for users willing to pick up another passenger before drop-off.");
         System.out.println("- Taxify Pink: rides are exclusively available for women and children.");
         System.out.println("- Taxify Silent: rides can be chosen at the standard rate for a quiet experience.");
-        //System.out.println("\n--- From Taxify Micro-Mobility Eletric, Be Your Own Driver ---");
-        //System.out.println("- Taxify Eletric Scooter: scooters must have 100% charge, or after 3 rides when battery is below or equal to 25% to start your journey.");
-        //System.out.println("- Taxify Eletric Bike: bikes mist have more than 50% charge to start yout journey.");
+        System.out.println("\n--- From Taxify Micro-Mobility Eletric, Be Your Own Driver ---");
+        System.out.println("- Taxify Eletric Scooter: scooters must have 100% charge, or after 3 rides when battery is below or equal to 25% to start your journey.");
+        System.out.println("- Taxify Eletric Bike: bikes mist have more than 50% charge to start yout journey.");
 
         System.out.println("\n-------------- Rates Per Block Taxify Vehicles --------------------");
-        System.out.println("Vehicle     Standard   Silent    Pink     Shared");
+        System.out.println("\nVehicle     Standard   Silent    Pink     Shared");
         System.out.println("---------------------------------------------------");
         System.out.printf("%-10s  €%-8.2f  €%-8.2f  €%-8.2f  €%-8.2f\n", 
                           "Taxi", 2.0, 2.0, 2.0, 2.0 * 0.8);
@@ -98,7 +98,7 @@ public class TestProgram {
   
         System.out.println("\n-------------- Rates Per Block Taxify Micro-Mobility Eletric --------------------");
         System.out.println("NOTE: Reserving Micro-Mobility Vehicles Costs 1.0 Euro.");
-        System.out.println("Vehicle     Standard");
+        System.out.println("\nVehicle     Standard");
         System.out.println("---------------------");
         System.out.printf("%-10s  €%-8.2f\n", 
                           "Scooter", 0.15);
@@ -152,7 +152,7 @@ public class TestProgram {
         }
         System.out.println("\n"); 
 
-       /*  
+       ///*  
         List<IMicroMobilityVehicle> microMobilityVehicles = new ArrayList<IMicroMobilityVehicle>();
         int micromobilitysize = 10; 
         for (int i = 1; i <= micromobilitysize; i++) { 
@@ -170,15 +170,15 @@ public class TestProgram {
             System.out.println(microMobilityVehicle);
         }
         System.out.println("\n"); 
-        */
+        //*/
        
 
         // Instantiate the taxi company and the application simulator. 
-        //TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles, microMobilityVehicles);
-        TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles);
+        TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles, microMobilityVehicles);
+        //TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles);
 
-        //ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles, microMobilityVehicles);
-        ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles);
+        ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles, microMobilityVehicles);
+        //ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles);
 
         //Add the application simulator as an observer of the taxy company.
         taxicompany.addObserver(appsimulator);

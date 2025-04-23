@@ -56,7 +56,7 @@ public class SharedService implements IService { //new from sprint 4
 
     @Override
     public String getServiceType() {
-        return "Shared";
+        return "Shared Service";
     }
 
     @Override
