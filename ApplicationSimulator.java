@@ -41,14 +41,14 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         for (IVehicle vehicle : this.vehicles) {            
             s = s + "\n" +
             String.format("%-8s", vehicle.getClass().getSimpleName()) + 
-            String.format("%-3d", vehicle.getId()) + " " +   
-            String.format("%-20s", vehicle.getDriver().getFirstName() + " " + vehicle.getDriver().getLastName()) + 
-            String.format("%-3d", vehicle.getStatistics().getServices()) + " services " +
-            String.format("%-5d", vehicle.getStatistics().getDistance()) + " km.    " +  
-            String.format("%-8.2f", vehicle.getStatistics().getBilling()) + " eur.      " +   
-            String.format("%-4d", vehicle.getStatistics().getReviews()) + " reviews    " +  
-            String.format("%-4.1f", vehicle.getStatistics().getStars()) + " stars";   
-        }         
+            String.format("%2d", vehicle.getId()) + " " +
+            String.format("%-22s", vehicle.getDriver().getFirstName() + " " + vehicle.getDriver().getLastName()) +
+            String.format("%2d", vehicle.getStatistics().getServices()) + " services | " +
+            String.format("%-3d", vehicle.getStatistics().getDistance()) + " km | " +
+            String.format("%5.1f", vehicle.getStatistics().getBilling()) + " EUR | " +
+            String.format("%2d", vehicle.getStatistics().getReviews()) + " reviews | " +
+            String.format("%4.2f", vehicle.getStatistics().getStars()) + " stars";
+                }         
         System.out.println(s);   
 
         /*
