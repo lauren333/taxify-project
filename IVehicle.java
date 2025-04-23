@@ -15,5 +15,11 @@ public interface IVehicle extends IMovable {
     public boolean isFree();
     public double calculateCost();
     public String toString();
+
+    //new from sprint 4 
+    public IDriver getDriver();
+    public void setDriver(IDriver driver); 
+    public boolean isSharing();
+    public VehicleStatus getStatus();
 }
  

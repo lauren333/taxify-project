@@ -4,7 +4,8 @@ import java.util.Random;
 public class ApplicationLibrary {
     public static final int MINIMUM_DISTANCE = 3;
     private static final int MAP_WIDTH = 10;
-    private static final int MAP_HEIGHT = 10;    
+    private static final int MAP_HEIGHT = 10;   
+    public static final int MAX_SHARED_DISTANCE = 100;      //SPRINT 4
 
     public static int rand() {
         Random random = new Random();

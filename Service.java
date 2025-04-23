@@ -38,6 +38,15 @@ public class Service implements IService {
         this.stars = stars;
     }
     
+    //SPRINT 4: 
+    //Implement pink rides for women and children. Only female drivers may offer pink rides towards women and under-age safety.
+    //Implement silent mode rides to improve user’s comfort. Users can request “Standard” or “Silent” rides.
+
+    @Override 
+    public String getServiceType(){
+        return "Standard"; 
+    }
+
     @Override
     public int calculateDistance() {
         return Math.abs(this.pickup.getX() - this.dropoff.getX()) + Math.abs(this.pickup.getY() - this.dropoff.getY());

@@ -2,41 +2,69 @@ package project.taxify;
 import java.util.List;
 //SPRINT 3: NEW CLASS
 
+//import project.taxify.MicroMobility.IMicroMobilityVehicle;
+
 public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     private ITaxiCompany company;
     private List<IUser> users;
     private List<IVehicle> vehicles;
+    //private List<IMicroMobilityVehicle> microMobilityVehicles; 
     
     public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles) {
+
+    //public ApplicationSimulator(ITaxiCompany company, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
         this.company = company;
         this.users = users;
         this.vehicles = vehicles;
+        //this.microMobilityVehicles = microMobilityVehicles;
     }
     
     @Override
     public void show() { //GIVEN CODE SPRINT 3//   
         // show the status of the vehicles
-        System.out.println("\n" + this.company.getName() + " status \n");
+        System.out.println("\n--" + this.company.getName() + " status Vehicles--");
         for (IVehicle vehicle : this.vehicles) {
             System.out.println(vehicle.toString());
         }   
+
+        /* 
+        System.out.println("\n--" + this.company.getName() + " status Micro-Mobilities--");
+        for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
+            System.out.println(microMobilityVehicle.toString());
+        }    */
     }
     
     @Override
     public void showStatistics() { //GIVEN CODE SPRINT 3//   
         // show the statistics of the company
-        String s = "\n" + this.company.getName() + " statistics \n";
+        String s = "\n---" + this.company.getName() + " Vehicle statistics--";
         for (IVehicle vehicle : this.vehicles) {            
             s = s + "\n" +
-            String.format("%-8s", vehicle.getClass().getSimpleName()) +
-            String.format("%2s", vehicle.getId()) + " " +
-            String.format("%2s", vehicle.getStatistics().getServices()) + " services " + 
-            String.format("%3s", vehicle.getStatistics().getDistance()) + " km. " +
-            String.format("%3s", vehicle.getStatistics().getBilling()) + " eur. " +
-            String.format("%2s", vehicle.getStatistics().getReviews()) + " reviews " +
-            String.format("%-4s", vehicle.getStatistics().getStars()) + " stars";
+            String.format("%-8s", vehicle.getClass().getSimpleName()) + 
+            String.format("%-3d", vehicle.getId()) + " " +   
+            String.format("%-20s", vehicle.getDriver().getFirstName() + " " + vehicle.getDriver().getLastName()) + 
+            String.format("%-3d", vehicle.getStatistics().getServices()) + " services " +
+            String.format("%-5d", vehicle.getStatistics().getDistance()) + " km.    " +  
+            String.format("%-8.2f", vehicle.getStatistics().getBilling()) + " eur.      " +   
+            String.format("%-4d", vehicle.getStatistics().getReviews()) + " reviews    " +  
+            String.format("%-4.1f", vehicle.getStatistics().getStars()) + " stars";   
         }         
-        System.out.println(s);        
+        System.out.println(s);   
+
+        /*
+        String ss = "\n---" + this.company.getName() + " Micro-Mobility statistics--";
+        for (IMicroMobilityVehicle mmVehicle : this.microMobilityVehicles) {
+            ss += "\n" +
+            String.format("%-8s", mmVehicle.getClass().getSimpleName()) + 
+            String.format("%-3d", mmVehicle.getId()) + " " +   
+            String.format("%-3d", mmVehicle.getStatistics().getServices()) + " services " +
+            String.format("%-5d", mmVehicle.getStatistics().getDistance()) + " km.    " +  
+            String.format("%-8.2f", mmVehicle.getStatistics().getBilling()) + " eur.      " +   
+            String.format("%-4d", mmVehicle.getStatistics().getReviews()) + " reviews    " +  
+            String.format("%-4.1f", mmVehicle.getStatistics().getStars()) + " stars"; 
+        }
+        System.out.println(ss);  
+        */     
     }    
 
     @Override
@@ -45,16 +73,32 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         for (IVehicle vehicle : this.vehicles) {
                vehicle.move();
         }
-    }
 
+        /*  
+        // Loop through micro-mobility vehicles (e.g., E-scooters, E-bikes)
+        for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
+            microMobilityVehicle.move(); 
+        } 
+        */
+    }
+  
     @Override
     public void requestService() {  //OUR CODE SPRINT 3//      
         // finds an available user and requests a service to the Taxi Company
         for (IUser user : this.users) { 
-            if (user.getService() == false){ 
-                user.requestService();
+            if (user.getService() == true){ 
+                continue; 
+            }
+            if (user.isFemale() || user.isChild() && ApplicationLibrary.rand() % 3 == 0){
+                user.requestPinkService();
                 break;
             }
+            if (ApplicationLibrary.rand() % 5 == 0){
+                user.requestSilentService();
+                break;
+            }
+            user.requestService();
+            break;
         }
     }
     

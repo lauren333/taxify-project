@@ -7,6 +7,15 @@ public class Route implements IRoute {
     
     public Route(ILocation location, ILocation destination) {
         this.route = setRoute(location, destination);
+        if (location.getX() == destination.getX() && location.getY() == destination.getY())
+        {
+            this.route = new ArrayList<ILocation>();
+            this.route.add(destination);
+        }
+        else
+        {
+            this.route = setRoute(location, destination);
+        }
     }
     
     @Override
@@ -34,7 +43,7 @@ public class Route implements IRoute {
            return route;        
     }
     
-    private static List<ILocation> setRoute(ILocation location, ILocation destination) {
+    private static List<ILocation> setRoute(ILocation location, ILocation destination) { //we can change this to make it like diagnals 
         List<ILocation> route = new ArrayList<ILocation>();
         
         int x1 = location.getX();

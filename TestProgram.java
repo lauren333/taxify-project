@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import project.taxify.MicroMobility.ElectricBike;
+import project.taxify.MicroMobility.ElectricScooter;
+import project.taxify.MicroMobility.IMicroMobilityVehicle;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+
 /* 
     // SPRINT 3: NEW CODE 
 
@@ -40,11 +48,20 @@ import java.util.Random;
 public class TestProgram {
 
     public static void main(String[] args) {
+        // Redirect output to taxify_output.txt file (overwrites)
+        try {
+            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/SoftwareEng/project/taxify/taxify_output2.txt", false));
+            System.setOut(fileOut);
+            System.setErr(fileOut); // redirect error output
+        } catch (FileNotFoundException e) {
+            System.err.println("Could not redirect output to file: " + e.getMessage());
+        }
+        
         //Declare a list of users.
         List<IUser> users = new ArrayList<IUser>();
         //Instantiate at least 15 users. (adding them to list "users")
         int usersize = 15;  
-    
+
         users.add(new User(1, "John", "Smith", 'M', LocalDate.of(1968, 9, 13)));  
         users.add(new User(2, "Leonardo", "DiCaprio", 'M', LocalDate.of(1974, 11, 11)));   
         users.add(new User(3, "Will", "Smith", 'M', LocalDate.of(1968, 9, 25)));  
@@ -60,8 +77,34 @@ public class TestProgram {
         users.add(new User(13, "Tom", "Cruise", 'M', LocalDate.of(1962, 7, 3)));  
         users.add(new User(14, "Jennifer", "Lopez", 'F', LocalDate.of(1969, 7, 24)));  
         users.add(new User(15, "Britney", "Spears", 'F', LocalDate.of(1981, 12, 2)));  
-                
-        System.out.println("\n" + "--------TAXIFY--------");
+        
+        System.out.println("\n" + "----------------------------------TAXIFY------------------------------------------");
+        System.out.println("\n---------------Catelog of Our Available Services-----------------");
+        System.out.println("--- From Taxify Vehicles, With the Best Drivers ---");
+        System.out.println("- Taxify Shared: rides have a 20% discount for users willing to pick up another passenger before drop-off.");
+        System.out.println("- Taxify Pink: rides are exclusively available for women and children.");
+        System.out.println("- Taxify Silent: rides can be chosen at the standard rate for a quiet experience.");
+        //System.out.println("\n--- From Taxify Micro-Mobility Eletric, Be Your Own Driver ---");
+        //System.out.println("- Taxify Eletric Scooter: scooters must have 100% charge, or after 3 rides when battery is below or equal to 25% to start your journey.");
+        //System.out.println("- Taxify Eletric Bike: bikes mist have more than 50% charge to start yout journey.");
+
+        System.out.println("\n-------------- Rates Per Block Taxify Vehicles --------------------");
+        System.out.println("Vehicle     Standard   Silent    Pink     Shared");
+        System.out.println("---------------------------------------------------");
+        System.out.printf("%-10s  €%-8.2f  €%-8.2f  €%-8.2f  €%-8.2f\n", 
+                          "Taxi", 2.0, 2.0, 2.0, 2.0 * 0.8);
+        System.out.printf("%-10s  €%-8.2f  €%-8.2f  €%-8.2f  €%-8.2f\n", 
+                          "Shuttle", 1.5, 1.5, 1.5, 1.5 * 0.8);
+  
+        System.out.println("\n-------------- Rates Per Block Taxify Micro-Mobility Eletric --------------------");
+        System.out.println("NOTE: Reserving Micro-Mobility Vehicles Costs 1.0 Euro.");
+        System.out.println("Vehicle     Standard");
+        System.out.println("---------------------");
+        System.out.printf("%-10s  €%-8.2f\n", 
+                          "Scooter", 0.15);
+        System.out.printf("%-10s  €%-8.2f\n", 
+                          "Bike",  0.25);   
+        
         System.out.println("\n" + usersize + " Users Are Online: ");
         for (IUser user : users) {  
             System.out.println(user);
@@ -71,23 +114,72 @@ public class TestProgram {
         List<IVehicle> vehicles = new ArrayList<IVehicle>();
         //Instantiate at least 10 vehicles (Taxis and Shuttles) and locate them at random locations of the city map.
         int vehiclesize = 10;  // OR WE CAN DO THIS: int vehiclesize = random.nextInt(10, 12);
-        for (int i = 1; i <= vehiclesize; i++) {
-            if (i % 4 == 0) { //every 4th vehicle is a shuttle
-                vehicles.add(new Shuttle(i , ApplicationLibrary.randomLocation())); 
-            } else {
-                vehicles.add(new Taxi(i , ApplicationLibrary.randomLocation())); 
-            }
+        //new from sprint 4: create drivers, F1s drivers, since my taxicompany is cool ahahha- im doing 10 for the 10 vehicles we have
+        List<IDriver> drivers = new ArrayList<IDriver>();
+        
+        drivers.add(new Driver("Lewis", "Hamilton", 'M', LocalDate.of(1985, 1, 7), 18));
+        drivers.add(new Driver("Michael", "Schumacher", 'M', LocalDate.of(1969, 1, 3), 21));
+        drivers.add(new Driver("Ayrton", "Senna", 'M', LocalDate.of(1960, 3, 21), 11));
+        drivers.add(new Driver("Sebastian", "Vettel", 'M', LocalDate.of(1987, 7, 3), 15));
+        drivers.add(new Driver("Max", "Verstappen", 'M', LocalDate.of(1997, 9, 30), 10));
+        drivers.add(new Driver("Lella", "Lombardi", 'F', LocalDate.of(1941, 3, 26), 6));
+        drivers.add(new Driver("Danica", "Patrick", 'F', LocalDate.of(1982, 3, 25), 14));
+        drivers.add(new Driver("Susie", "Wolff", 'F', LocalDate.of(1982, 12, 6), 13));
+        drivers.add(new Driver("Jamie", "Chadwick", 'F', LocalDate.of(1998, 5, 20), 8));
+        drivers.add(new Driver("Michelle", "Mouton", 'F', LocalDate.of(1951, 6, 23), 15));
+        
+        System.out.println("\n" + vehiclesize + " Drivers Are Online: ");
+        for (IDriver driver : drivers) {  
+            System.out.println(driver);
         }
-
+        
+        for (int i = 1; i <= vehiclesize; i++) { //changed in sprint 4, to start from 0, but assign index +1 so the vehicle id start from 1 not 0
+            IVehicle vehicle; 
+            IDriver driver = drivers.get(i-1); //get index 
+            if (i % 4 == 0) { //every 4th vehicle is a shuttle
+                vehicle = new Shuttle(i, ApplicationLibrary.randomLocation()); 
+            } else {
+                vehicle = new Taxi(i , ApplicationLibrary.randomLocation()); 
+            }
+            vehicle.setDriver(driver); 
+            driver.setVehicle(vehicle);
+            vehicles.add(vehicle); 
+        }
+       
         System.out.println("\n" + vehiclesize + " Vehicles Are Online: ");
         for (IVehicle vehicle : vehicles) {  
             System.out.println(vehicle);
         }
         System.out.println("\n"); 
 
+       /*  
+        List<IMicroMobilityVehicle> microMobilityVehicles = new ArrayList<IMicroMobilityVehicle>();
+        int micromobilitysize = 10; 
+        for (int i = 1; i <= micromobilitysize; i++) { 
+            IMicroMobilityVehicle microMobilityVehicle; 
+            if (i % 4 == 0) { //every 4th vehicle is a shuttle
+                microMobilityVehicle = new ElectricBike(i, ApplicationLibrary.randomLocation()); 
+            } else {
+                microMobilityVehicle = new ElectricScooter(i , ApplicationLibrary.randomLocation()); 
+            }
+            microMobilityVehicles.add(microMobilityVehicle); 
+        }
+
+        System.out.println("\n" + micromobilitysize + " Micro-Mobilities Are Online: ");
+        for (IMicroMobilityVehicle microMobilityVehicle : microMobilityVehicles) {  
+            System.out.println(microMobilityVehicle);
+        }
+        System.out.println("\n"); 
+        */
+       
+
         // Instantiate the taxi company and the application simulator. 
+        //TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles, microMobilityVehicles);
         TaxiCompany taxicompany = new TaxiCompany("Taxify", users, vehicles);
+
+        //ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles, microMobilityVehicles);
         ApplicationSimulator appsimulator = new ApplicationSimulator(taxicompany, users, vehicles);
+
         //Add the application simulator as an observer of the taxy company.
         taxicompany.addObserver(appsimulator);
 
@@ -106,8 +198,8 @@ public class TestProgram {
                 appsimulator.requestService();
             }
             appsimulator.show(); //Show the status of the application each iteration
-            System.out.println("Updates: ");
-            appsimulator.update(); //and update its state 
+            System.out.println("--Updates--");
+            appsimulator.update(); //and update its state, move the vehicle  
         }
 
         //Finally, show the statistics.
