@@ -35,5 +35,4 @@ public class RideServiceTypeFactory {
     public static IService createMicroMobilityService(IUser user, ILocation pickup, ILocation dropoff) {
         return new MicroMobilityService(user, pickup, dropoff);
     }
- 
 }

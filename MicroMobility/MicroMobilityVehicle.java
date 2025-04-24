@@ -98,7 +98,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         this.service = service; 
         //create a route but from the user, to the location of the vehicle
         this.destination = service.getPickupLocation();
-        this.route = new Route(this.destination,this.location); 
+        this.route = new Route(this.destination, this.location); 
         reserved = true;
         status = VehicleStatus.PICKUP;
         //System.out.println("Reserved. Your Fee for Reservation: " + RESERVATION_FEE + "€");
@@ -127,6 +127,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         // set service to null, and status to "free"
         this.service = null;
         this.status = VehicleStatus.FREE;
+        //no need for new route since cant self drive
     }
     
     @Override
@@ -172,10 +173,11 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
                 //System.out.println("Vehicle " + this.id + " driven by " + service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", moving to: " + this.location);
             }
             if (!this.route.hasLocations()) {
-                notifyArrivalAtDropoffLocation();
+                if (this.location.getX() == destination.getX() && this.location.getY() == destination.getY()) {
+                    notifyArrivalAtDropoffLocation();
+                } 
             }
         }
-
         // FREE: do nothing
 
         /*  

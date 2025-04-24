@@ -81,39 +81,24 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
         } 
         //*/
     }
-  
+
     @Override
     public void requestService() {  //OUR CODE SPRINT 3//      
         // finds an available user and requests a service to the Taxi Company
-        boolean femaleDriverAvailable = false;
-
-        // Check if there's an available female driver
-        /*  
-        for (IVehicle vehicle : this.vehicles) {
-            if (vehicle.isFree() && Character.toUpperCase(vehicle.getDriver().getGender()) == 'F') {
-                femaleDriverAvailable = true;
-                break;  // Exit once a female driver is found
-            }
-        }
-        */
-
         for (IUser user : this.users) { 
             if (user.getService() == true){ 
                 continue; 
             }
-            /*  
-            if (femaleDriverAvailable) {
-                if (user.isFemale() || user.isChild() && ApplicationLibrary.rand() % 3 == 0){
-                    user.requestPinkService();
-                    break;
-                }
-                break; 
-            } 
-            */
-            if (user.isFemale() || user.isChild() && ApplicationLibrary.rand() % 3 == 0){
+            if (user.getPinkServiceEligibility() && ApplicationLibrary.rand() % 3 == 0){
                 user.requestPinkService();
                 break;
-            }
+            } 
+              
+            //if (user.isFemale() || user.isChild() && ApplicationLibrary.rand() % 3 == 0){
+                //user.requestPinkService();
+                //break;
+            //}
+            
             if (ApplicationLibrary.rand() % 5 == 0){
                 user.requestSilentService();
                 break;

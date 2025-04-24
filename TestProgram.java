@@ -84,7 +84,7 @@ public class TestProgram {
         System.out.println("- Taxify Shared: rides have a 20% discount for users willing to pick up another passenger before drop-off.");
         System.out.println("- Taxify Pink: rides are exclusively available for women and children.");
         System.out.println("- Taxify Silent: rides can be chosen at the standard rate for a quiet experience.");
-        System.out.println("\n--- From Taxify Micro-Mobility Eletric, Be Your Own Driver ---");
+        System.out.println("\n--- From Taxify Micro-Mobility Electric, Be Your Own Driver ---");
         System.out.println("- Taxify Eletric Scooter: scooters must have 100% charge, or after 3 rides when battery is below or equal to 25% to start your journey.");
         System.out.println("- Taxify Eletric Bike: bikes mist have more than 50% charge to start yout journey.");
 
@@ -96,7 +96,7 @@ public class TestProgram {
         System.out.printf("%-10s  €%-8.2f  €%-8.2f  €%-8.2f  €%-8.2f\n", 
                           "Shuttle", 1.5, 1.5, 1.5, 1.5 * 0.8);
   
-        System.out.println("\n-------------- Rates Per Block Taxify Micro-Mobility Eletric --------------------");
+        System.out.println("\n-------------- Rates Per Block Taxify Micro-Mobility Electric --------------------");
         System.out.println("NOTE: Reserving Micro-Mobility Vehicles Costs 1.0 Euro.");
         System.out.println("\nVehicle     Standard");
         System.out.println("---------------------");

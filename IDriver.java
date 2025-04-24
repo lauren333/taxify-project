@@ -4,11 +4,12 @@ import java.time.LocalDate;
 
 //new from sprint 4
 public interface IDriver {
-    String getFirstName();
-    String getLastName();
-    char getGender();
-    LocalDate getBirthday();
-    int getYearsOfExperience();
-    double getRating();
-    void setVehicle(IVehicle vehicle);
+    public String getFirstName();
+    public String getLastName();
+    public char getGender();
+    public LocalDate getBirthday();
+    public int getYearsOfExperience();
+    public double getRating();
+    public void setVehicle(IVehicle vehicle);
+    public IVehicle getVehicle(); 
 }

@@ -1,5 +1,7 @@
 package project.taxify;
 
+import java.util.List;
+
 public abstract class Vehicle implements IVehicle {
     private int id;
     private ITaxiCompany company;
@@ -10,8 +12,7 @@ public abstract class Vehicle implements IVehicle {
     private IStatistics statistics;
     private IRoute route;
     private IDriver driver; //new from sprint 4
-    //private IUser user; 
-       
+        
     public Vehicle(int id, ILocation location) {        
         this.id = id;
         this.service = null;
@@ -70,7 +71,6 @@ public abstract class Vehicle implements IVehicle {
     public void pickService(IService service) { 
         this.service = service;
         this.destination = service.getPickupLocation();
-        //this.user = service.getUser(); // <--- set the user here new from sprin 5
         this.route = new Route(this.location, this.destination);        
         this.status = VehicleStatus.PICKUP;
     }
@@ -79,7 +79,6 @@ public abstract class Vehicle implements IVehicle {
     @Override
     // NEW CODE Sp2 // set destination to the service drop-off location, and status to "service"
     public void startService() {
-        //service is already assigned in pickService() 
         this.destination = service.getDropoffLocation(); 
         this.route = new Route(this.location, this.destination); 
         this.status = VehicleStatus.SERVICE; 
@@ -110,8 +109,6 @@ public abstract class Vehicle implements IVehicle {
     public void notifyArrivalAtPickupLocation() {
         //UPDATE SPRINT 3 // WE MUST HAVE THIS.COMPANY SINCE WE WANT THE CURRENT INSTANCE 
         this.company.arrivedAtPickupLocation(this); 
-        //(this)refers to current vehicle, 
-        //aka the current instance of the class its being passed into the method so we can update the company 
         this.startService();
     }
       
@@ -134,8 +131,10 @@ public abstract class Vehicle implements IVehicle {
             // total distance for both services is accumulated in the Statistics class, so only need to do it at the end
             if (sharedservice.AtLeastOneReviewedFlag) //update the reviews for both accumulatively, or at least one ride
                 this.statistics.updateReviews();
+            this.endService();
+        } else { 
+            this.endService(); //end the service 
         }
-        this.endService(); //end the service 
     }
      
     
@@ -161,8 +160,7 @@ public abstract class Vehicle implements IVehicle {
                 // the vehicle continues its random route
                 this.destination = ApplicationLibrary.randomLocation(this.location);
                 this.route = new Route(this.location, this.destination);
-            }
-            else {
+            } else {
                 // check if the vehicle has arrived to a pickup or drop off location
                 ILocation origin = this.service.getPickupLocation();
                 ILocation destination = this.service.getDropoffLocation();

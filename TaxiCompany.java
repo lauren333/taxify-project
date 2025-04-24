@@ -57,9 +57,6 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         notifyObserver(vehicle.getClass().getSimpleName() + " " + vehicle.getId() + " arrived at pickup location " + vehicle.getService().getUser().getId());
     }
 
-
-    
-
     @Override
     public void arrivedAtDropoffLocation(IVehicle vehicle) {
         // a vehicle arrives at the drop-off location
@@ -79,11 +76,13 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     ///* 
     //NEW FOR MMVEHICLES SPRINT 5 
 
+    @Override
     public void arrivedAtPickupLocation2(IMicroMobilityVehicle microMobilityVehicle) {
         IService service = microMobilityVehicle.getService(); 
         notifyObserver(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility vehicle " + microMobilityVehicle.getClass().getSimpleName() + " " + microMobilityVehicle.getId());
     }
     
+    @Override
     public void arrivedAtDropoffLocation2(IMicroMobilityVehicle microMobilityVehicle) {
         IService service = microMobilityVehicle.getService();       
         int user = service.getUser().getId();
@@ -121,6 +120,41 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         return -1; //no id found 
     }
 
+    private int findFreeVehicle() {
+        // returns the index of a free vehicle in this.vehicles
+        for (int i = 0; i < this.vehicles.size(); i++){
+            if (this.vehicles.get(i).isFree())
+                return i;
+        }
+        return -1;
+    }
+
+    //new from sprint 4
+    private List<IVehicle> listOfFreeVehicles(List<IVehicle> vehicleList){
+        List<IVehicle> freeVehicles = new ArrayList<IVehicle>();
+        for (int i = 0; i < vehicleList.size(); i++){
+            IVehicle vehicle  = vehicleList.get(i);
+            if (vehicle.isFree()) { 
+                freeVehicles.add(vehicle);
+            }
+        }
+        return freeVehicles;
+    }
+
+     //new from sprint 4
+    private List<IVehicle> listOfFemaleDrivenVehicles(){
+        List<IVehicle> femaleDrivenVehicles = new ArrayList<IVehicle>();
+        for (int i = 0; i < this.vehicles.size(); i++){
+            IVehicle vehicle = this.vehicles.get(i);
+            //if (Character.toUpperCase(vehicle.getDriver().getGender()) == 'F'){ 
+            if (vehicle.getDriver().getGender() == 'F'){ 
+                femaleDrivenVehicles.add(vehicle);
+            }
+        }
+        return femaleDrivenVehicles;
+    }
+
+
     ///* 
     //new from sprint 5 
     // Method to get a list of free micro-mobility vehicles
@@ -135,37 +169,19 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         return freeVehicles;
     } //*/
 
-    //new from sprint 4
-    private List<IVehicle> listOfFreeVehicles(List<IVehicle> vehicleList){
-        List<IVehicle> freeVehicles = new ArrayList<IVehicle>();
-        for (int i = 0; i < vehicleList.size(); i++){
-            IVehicle vehicle  = vehicleList.get(i);
-            if (vehicle.isFree()){ 
-                freeVehicles.add(vehicle);
-            }
-        }
-        return freeVehicles;
-    }
-
-    //new from sprint 4
-    private List<IVehicle> listOfFemaleDrivenVehicles(){
-        List<IVehicle> femaleDrivenVehicles = new ArrayList<IVehicle>();
-        for (int i = 0; i < this.vehicles.size(); i++){
-            IVehicle vehicle = this.vehicles.get(i);
-            if (Character.toUpperCase(vehicle.getDriver().getGender()) == 'F'){ 
-                femaleDrivenVehicles.add(vehicle);
-            }
-        }
-        return femaleDrivenVehicles;
-    }
 
     private int closestVehicle(List<IVehicle> vehicleList, ILocation location) { 
-        int currentClosestDistance = Integer.MAX_VALUE;
+        //int currentClosestDistance = Integer.MAX_VALUE;
+        int currentClosestDistance = 9999;
         int closestIndex = -1;
- 
-        if (vehicleList.isEmpty()) { // if list is empty
-            throw new IllegalArgumentException("The list of vehicles is empty.");
-        }
+        
+        //if (vehicleList.isEmpty()) { // if list is empty
+            //return -1;
+            //throw new IllegalArgumentException("The list of vehicles is empty.");
+        //}
+        if (vehicleList.size() == 0)
+            return -1; 
+
         for (int i = 0; i < vehicleList.size(); i++){ //goes through the whole list of vehicles!! to find closest 
             IVehicle vehicle = vehicleList.get(i);
             int manhattanDistanceVehicletoLocation = ApplicationLibrary.distance(vehicle.getLocation(), location);
@@ -182,10 +198,14 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     private int closestMicroMobilityVehicle(List<IMicroMobilityVehicle> microMobilityVehicles, ILocation location) {
         int currentClosestDistance = Integer.MAX_VALUE;
         int closestIndex = -1;
-    
-        if (microMobilityVehicles.isEmpty()) { 
-            throw new IllegalArgumentException("The list of micro-mobility vehicles is empty.");
+
+        if (microMobilityVehicles.isEmpty()) { // if list is empty
+            return -1; // Return -1 to indicate no vehicle found
         }
+
+        //if (microMobilityVehicles.isEmpty()) { 
+            //throw new IllegalArgumentException("The list of micro-mobility vehicles is empty.");
+        //}s
         for (int i = 0; i <microMobilityVehicles.size(); i++) {
             IMicroMobilityVehicle vehicle = microMobilityVehicles.get(i);
             int manhattanDistanceVehicletoLocation = ApplicationLibrary.distance(vehicle.getLocation(), location);
@@ -202,6 +222,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         //NEW LOGIC FOR MM VEHICLES SPRINT 5
      
      
+    @Override
     public boolean provideMicroMobilityService(int userId, ILocation origin, ILocation destination){ 
         int requestingUserIndex = findUserIndex(userId);
         //IUser user = users.get(requestingUserIndex);
@@ -248,6 +269,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         if (vehicleIndex == -1){  //if no free vehicle found
             return false;
         }
+
         if (vehicleIndex != -1) {   // If a vehicle is found, update the user status and create a servi    
             // update the user status
             this.users.get(requestingUsersIndex).setService(true);
@@ -274,6 +296,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         if (closestFreeFemaleIndex == -1){ //// If no female vehicle is available, return false
             return false;
         } 
+
         // If a vehicle is found, update the user status and create a service  
         this.users.get(requestingUsersIndex).setService(true);
         IService pinkService = RideServiceTypeFactory.createPinkService(this.users.get(requestingUsersIndex), origin, destination);
@@ -308,13 +331,16 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         return true;
     }
     //new from sprint 4
+    @Override
     public boolean provideSharedService(int userId, ILocation origin, ILocation destination){
         int requestingUsersIndex = findUserIndex(userId); // Find the user's index in the list 
         IUser user = this.users.get(requestingUsersIndex); //get user 
         int closestVehicleIndex = closestVehicle(this.vehicles, origin); //get index of closest vehicle 
+
         if (closestVehicleIndex == -1){  //if no vehicle is found
             return false; 
         }
+
         IVehicle closestVehicle = this.vehicles.get(closestVehicleIndex);
         IService currentService = closestVehicle.getService();
         // Vehicle is not currently assigned to any service so cant "share" if no one is there in the first place
@@ -341,12 +367,21 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
 
         // Allow for shared service if the vehicle is in service or picking someone up since
         //since when dropping someone off doesnt make it much of sharing 
+
+        if (closestVehicle.getStatus() != VehicleStatus.PICKUP)
+            sharedService.markSecondaryStarted();
+        if (closestVehicle.getStatus() == VehicleStatus.SERVICE){
+            sharedService.markSecondaryStarted();
+        }
+    
+        /* 
         if (closestVehicle.getStatus() == VehicleStatus.PICKUP || closestVehicle.getStatus() == VehicleStatus.SERVICE) {
             sharedService.markSecondaryStarted(); // Mark the second journey  
         } else {
             return false; 
         }
-
+        */
+        
         // Assign the shared service to the vehicle
         closestVehicle.pickService(sharedService);
         //mark user as in service, true

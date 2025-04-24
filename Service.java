@@ -44,7 +44,7 @@ public class Service implements IService {
 
     @Override 
     public String getServiceType(){
-        return "Standard"; 
+        return "Standard Service "; 
     }
 
     @Override

@@ -12,7 +12,6 @@ public class User implements IUser {
     private ITaxiCompany company;
     private boolean service;
 
-    private ILocation location; // User's current location new fromt sprint 5 
 
     public User(int id, String firstName, String lastName, char gender, LocalDate birthDate) {
         this.id = id;
@@ -21,7 +20,6 @@ public class User implements IUser {
         this.gender = gender;
         this.birthDate = birthDate;
         this.service = false;
-        this.location = ApplicationLibrary.randomLocation(); // assign initial position new from sprint 5
     }
     
     @Override
@@ -66,10 +64,30 @@ public class User implements IUser {
 
     @Override
     public void requestService() {
-        ILocation origin = this.location;
-        //ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation origin = ApplicationLibrary.randomLocation();
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.provideService(this.id, origin, destination);        
+    }
+
+    @Override
+    public void requestPinkService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin);
+        this.company.providePinkService(this.id, origin, destination);   
+    }
+
+    @Override
+    public void requestSilentService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin);
+        this.company.provideSilentService(this.id, origin, destination);    
+    }
+
+    @Override
+    public void requestMicroMobilityService() {
+        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation destination = ApplicationLibrary.randomLocation(origin);
+        this.company.provideMicroMobilityService(this.id, origin, destination);    
     }
 
     @Override
@@ -79,7 +97,8 @@ public class User implements IUser {
 
     @Override
     public boolean isFemale() { //new from sprint 4 to help calculate if appplicable for Pink Service 
-        return Character.toUpperCase(this.getGender()) == 'F';
+        //return Character.toUpperCase(this.getGender()) == 'F';
+        return (this.getGender() == 'F'); 
     }
 
     @Override
@@ -93,24 +112,7 @@ public class User implements IUser {
     @Override
     public boolean getPinkServiceEligibility() { //new from sprint 4: applicable if women or child 
         return  (this.isChild() || this.isFemale()) ?  true : false;  
-    }
-
-    @Override
-    public void requestPinkService() {
-        ILocation origin = this.location;
-        //ILocation origin = ApplicationLibrary.randomLocation();
-        ILocation destination = ApplicationLibrary.randomLocation(origin);
-        this.company.providePinkService(this.id, origin, destination);   
-    }
-
-    @Override
-    public void requestSilentService() {
-        ILocation origin = this.location;
-        //ILocation origin = ApplicationLibrary.randomLocation();
-        ILocation destination = ApplicationLibrary.randomLocation(origin);
-        this.company.provideSilentService(this.id, origin, destination);    
-    }
-    
+    }    
 
     @Override
     public void rateService(IService service) {
@@ -125,13 +127,4 @@ public class User implements IUser {
         return this.getId() + " " + String.format("%-20s",this.getFirstName() + "  " + this.getLastName() + "  " + this.getGender() + "  " + this.getBirthDate());
         //ORIGINAL CODE: return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName());
     }
-
-    @Override
-    public void requestMicroMobilityService() {
-        ILocation origin = this.location;
-        //ILocation origin = ApplicationLibrary.randomLocation();
-        ILocation destination = ApplicationLibrary.randomLocation(origin);
-        this.company.provideMicroMobilityService(this.id, origin, destination);    
-    }
-
 }

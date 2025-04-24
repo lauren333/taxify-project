@@ -17,12 +17,11 @@ public class ElectricScooter extends MicroMobilityVehicle {
             this.ridecount = 0;      // Reset ride count after charging
         }
         if (this.batteryLevel < 100.0) {
-            System.err.println("Electric Scooter" + this.getId() + "will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
+            System.err.println("Electric Scooter " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
             this.chargeBattery();
-            return;
         }
         if (this.batteryLevel <= 25.0) {
-            System.err.println("Electric Scooter" + this.getId() + "will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
+            System.err.println("Electric Scooter " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
             this.chargeBattery();
         }
         super.startRide(); // Proceed with ride
@@ -35,6 +34,6 @@ public class ElectricScooter extends MicroMobilityVehicle {
 
     @Override
     public String toString() { //updated in sprint 4 to show whos driving 
-        return "Eletric Scooter " + super.toString();
+        return "Electric Scooter " + super.toString();
     }
 }
