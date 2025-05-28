@@ -1,4 +1,4 @@
-// Taxify – Ride Service Platform
+## Taxify – Ride Service Platform
 
 Taxify is a Java-based simulation of a ride service platform featuring two main service types:
 - Vehicles: taxis and shuttles
@@ -9,7 +9,7 @@ The simulation assigns the nearest available vehicle or micro-mobility unit on a
 
 ⸻
 
-Key Features:
+### Key Features:
 - Vehicle ride types: Supports individual ride options— Regular, Shared, Pink, Silent
 - Shared ride logic: A ride becomes shared only when one user is already in transit and another user requests a shared ride that is accepted by both. Users may have the same or different destinations
 - Micro-mobility rides: Scooters and bikes require walking to the vehicle and include battery tracking
@@ -20,7 +20,7 @@ Key Features:
 -Tracks stats per vehicle: distance traveled, revenue generated, number of rides
 -Simulation data output to a structured file (overwritten with each run)
 
-Fare structure:
+### Fare structure:
 - Taxi: 2.00 per block
 - Shuttle: 1.50 per block
 - Bike: 0.25 per block + 1.00 reservation fee
