@@ -257,35 +257,43 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     //updated in sprint 4
     @Override
     public boolean provideService(int user, ILocation origin, ILocation destination) {
-        int requestingUsersIndex = findUserIndex(user);  
-
-        if (provideSharedService(user, origin, destination)){
-            return true;
-        }
-
-        List<IVehicle> freeVehicles = this.listOfFreeVehicles(this.vehicles); //get list of free and find closest 
-        int vehicleIndex = this.closestVehicle(freeVehicles, origin);      
+        int requestingUsersIndex = findUserIndex(user); 
+        
+        
+        int vehicleIndex = this.closestVehicle(this.vehicles, origin);      
 
         if (vehicleIndex == -1){  //if no free vehicle found
             return false;
         }
 
-        if (vehicleIndex != -1) {   // If a vehicle is found, update the user status and create a servi    
-            // update the user status
-            this.users.get(requestingUsersIndex).setService(true);
+        IVehicle vehicle = this.vehicles.get(vehicleIndex);
+
+        if (!vehicle.isFree() && vehicle.getService().getUser().isAllowedToShareFlag() && !vehicle.isSharing()){
+            return provideSharedService(user, origin, destination);
+        }
+
+        //if (provideSharedService(user, origin, destination)){
+         //   return true;
+        //}
+
+        int freeVehicleIndex = this.closestVehicle(listOfFreeVehicles(this.vehicles), origin); //get list of free and find closest 
+        if (freeVehicleIndex == -1){  //if no free vehicle found
+            return false;
+        }
+
+        // update the user status
+        this.users.get(requestingUsersIndex).setService(true);
             // create a service with the user, the pickup and the drop-off location
-            IService service = RideServiceTypeFactory.createStandardService(this.users.get(requestingUsersIndex), origin, destination);
+        IService service = RideServiceTypeFactory.createStandardService(this.users.get(requestingUsersIndex), origin, destination);
             // assign the new service to the vehicle           
-            this.vehicles.get(vehicleIndex).pickService(service);            
+        this.vehicles.get(vehicleIndex).pickService(service);            
             //updated in sprint 4 to specify type of service
-            notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() + ", the ride is assigned to " +
-                           this.vehicles.get(vehicleIndex).getClass().getSimpleName() + " " + this.vehicles.get(vehicleIndex).getId() + " at location " +
-                           this.vehicles.get(vehicleIndex).getLocation().toString());     
+        notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() + ", the ride is assigned to " +
+                        this.vehicles.get(vehicleIndex).getClass().getSimpleName() + " " + this.vehicles.get(vehicleIndex).getId() + " at location " +
+                        this.vehicles.get(vehicleIndex).getLocation().toString());     
             // update the counter of services          
-            this.totalServices++;           
-            return true;
-        } 
-        return false;           
+        this.totalServices++;           
+        return true;          
     }
 
     @Override //new from sprint 4
@@ -330,6 +338,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         this.totalServices++;
         return true;
     }
+    
     //new from sprint 4
     @Override
     public boolean provideSharedService(int userId, ILocation origin, ILocation destination){
@@ -373,15 +382,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         if (closestVehicle.getStatus() == VehicleStatus.SERVICE){
             sharedService.markSecondaryStarted();
         }
-    
-        /* 
-        if (closestVehicle.getStatus() == VehicleStatus.PICKUP || closestVehicle.getStatus() == VehicleStatus.SERVICE) {
-            sharedService.markSecondaryStarted(); // Mark the second journey  
-        } else {
-            return false; 
-        }
-        */
-        
+            
         // Assign the shared service to the vehicle
         closestVehicle.pickService(sharedService);
         //mark user as in service, true

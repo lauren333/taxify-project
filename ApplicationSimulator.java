@@ -27,11 +27,10 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             System.out.println(vehicle.toString());
         }   
 
-        ///* 
         System.out.println("\n--" + this.company.getName() + " status Micro-Mobilities--");
         for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
             System.out.println(microMobilityVehicle.toString());
-        }    //*/
+        }     
     }
     
     @Override
@@ -74,12 +73,10 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             vehicle.move();
         }
 
-        ///*  
         // Loop through micro-mobility vehicles (e.g., E-scooters, E-bikes)
         for (IMicroMobilityVehicle microMobilityVehicle : this.microMobilityVehicles) {
             microMobilityVehicle.move(); 
         } 
-        //*/
     }
 
     @Override
@@ -93,12 +90,7 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
                 user.requestPinkService();
                 break;
             } 
-              
-            //if (user.isFemale() || user.isChild() && ApplicationLibrary.rand() % 3 == 0){
-                //user.requestPinkService();
-                //break;
-            //}
-            
+                          
             if (ApplicationLibrary.rand() % 5 == 0){
                 user.requestSilentService();
                 break;

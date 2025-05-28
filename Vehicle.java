@@ -79,7 +79,25 @@ public abstract class Vehicle implements IVehicle {
     @Override
     // NEW CODE Sp2 // set destination to the service drop-off location, and status to "service"
     public void startService() {
-        this.destination = service.getDropoffLocation(); 
+
+        if (isSharedService(this.service)){
+            SharedService sharedService = (SharedService) this.service;
+            if (!sharedService.isPrimaryComplete()){
+                sharedService.hasStartedSecondary();
+                this.destination = sharedService.getPickupLocation();
+                this.route = new Route(this.location, destination);
+                return;
+            } else {
+                sharedService.bothUsersPickedUp = true;
+                this.destination = sharedService.getDropoffLocation();
+                this.route = new Route(this.location, destination);
+                this.status = VehicleStatus.SERVICE;
+                return;
+            } 
+        }
+        this.destination = service.getDropoffLocation();
+
+        //this.destination = service.getDropoffLocation(); 
         this.route = new Route(this.location, this.destination); 
         this.status = VehicleStatus.SERVICE; 
     }
@@ -120,19 +138,29 @@ public abstract class Vehicle implements IVehicle {
         if (this.service instanceof SharedService){//new from sprint 4 updates, handle if shared service 
             SharedService sharedservice = (SharedService) this.service; //cast object into sharedservice to access its methods
             if(!sharedservice.isPrimaryComplete()){ //if the first dropoff is not marked complete 
-                sharedservice.markPrimaryComplete(); //mark it completed 
-                if (sharedservice.getStars() >= 1){ //has at least one rating been done 
-                    sharedservice.AtLeastOneReviewedFlag = true; //flip the flag bc the first one rated
+                this.company.arrivedAtDropoffLocation(this);
+                this.statistics.updateBilling(this.calculateCost());
+                this.statistics.updateDistance(this.service.calculateDistance());
+                this.statistics.updateServices();
+                sharedservice.markPrimaryComplete();
+                this.destination = sharedservice.getDropoffLocation(); 
+                this.route = new Route(this.location, this.destination);
+                if (sharedservice.AtLeastOneReviewedFlag){ //has at least one rating been done 
+                    this.statistics.updateReviews();
+                    this.statistics.updateStars(sharedservice.initialStars);
+                    //sharedservice.AtLeastOneReviewedFlag = true; //flip the flag bc the first one rated
                 }
-                this.startService(); //second part of ride
+                //this.startService(); //second part of ride
                 return; //exit method, stats and reviews not updates yet
             }
             this.statistics.updateServices(); //update service stats for both rides,
             // total distance for both services is accumulated in the Statistics class, so only need to do it at the end
-            if (sharedservice.AtLeastOneReviewedFlag) //update the reviews for both accumulatively, or at least one ride
-                this.statistics.updateReviews();
+            //if (sharedservice.AtLeastOneReviewedFlag) //update the reviews for both accumulatively, or at least one ride
+            //   this.statistics.updateReviews();
+            this.company.arrivedAtDropoffLocation(this); 
             this.endService();
         } else { 
+            this.company.arrivedAtDropoffLocation(this);
             this.endService(); //end the service 
         }
     }
@@ -149,6 +177,12 @@ public abstract class Vehicle implements IVehicle {
         return this.service instanceof SharedService ? true : false; 
     } 
 
+    private boolean isSharedService(IService service) {
+        if (service instanceof SharedService)
+            return true;
+        return false;
+    }
+
     @Override
     public void move() {
         // get the next location from the driving route
@@ -164,6 +198,17 @@ public abstract class Vehicle implements IVehicle {
                 // check if the vehicle has arrived to a pickup or drop off location
                 ILocation origin = this.service.getPickupLocation();
                 ILocation destination = this.service.getDropoffLocation();
+
+                if (isSharedService(this.service)){
+                    SharedService shared = (SharedService) this.service;
+                    if (shared.bothUsersPickedUp && this.location.getX() == destination.getX() && this.location.getY() == destination.getY())
+                    {
+                        notifyArrivalAtDropoffLocation();
+                        return;
+                    }
+                }
+
+
                 if (this.location.getX() == origin.getX() && this.location.getY() == origin.getY()) {
                     //System.out.println(this.id + "Arrived at Pickup Location");
                     notifyArrivalAtPickupLocation();

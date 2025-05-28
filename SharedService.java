@@ -5,8 +5,11 @@ public class SharedService implements IService { //new from sprint 4
     private IService secondaryService;
     private boolean isPrimaryComplete;
     private boolean hasStartedSecondary = false;
+    public boolean bothUsersPickedUp = false;
     private int stars;
+    public int initialStars = 0;
     public boolean AtLeastOneReviewedFlag = false;  //flag to be used in vehicle class 
+    public boolean bothReviewed = false;
 
 
     public SharedService(IService primaryService, IService secondaryService){
@@ -61,6 +64,11 @@ public class SharedService implements IService { //new from sprint 4
 
     @Override
     public void setStars(int stars){
+        if (!hasStartedSecondary) {
+            this.initialStars = stars;
+            this.AtLeastOneReviewedFlag = true;
+            return;
+        }
         this.stars += stars;
     }
 
