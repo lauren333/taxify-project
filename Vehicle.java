@@ -134,7 +134,7 @@ public abstract class Vehicle implements IVehicle {
     @Override
     // NEW CODE Sp2 // notify the company that the vehicle is at the drop off location and end the service
     public void notifyArrivalAtDropoffLocation() {
-        this.company.arrivedAtDropoffLocation(this);
+        // this.company.arrivedAtDropoffLocation(this);
         if (this.service instanceof SharedService){//new from sprint 4 updates, handle if shared service 
             SharedService sharedservice = (SharedService) this.service; //cast object into sharedservice to access its methods
             if(!sharedservice.isPrimaryComplete()){ //if the first dropoff is not marked complete 

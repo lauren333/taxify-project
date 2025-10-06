@@ -56,671 +56,242 @@ Jamie Chadwick  F  1998-05-20 with 8 years experience
 Michelle Mouton  F  1951-06-23 with 15 years experience
 
 10 Vehicles Are Online: 
-Taxi    1: L. Hamilton at (6,7) driving to (4,4) is free with path (5,7) (4,7) (4,6) (4,5) (4,4) 
-Taxi    2: M. Schumacher at (0,0) driving to (4,2) is free with path (1,0) (2,0) (3,0) (4,0) (4,1) (4,2) 
-Taxi    3: A. Senna at (1,4) driving to (6,6) is free with path (2,4) (3,4) (4,4) (5,4) (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (6,6) driving to (2,7) is free with path (5,6) (4,6) (3,6) (2,6) (2,7) 
-Taxi    5: M. Verstappen at (7,3) driving to (9,0) is free with path (8,3) (9,3) (9,2) (9,1) (9,0) 
-Taxi    6: L. Lombardi at (9,7) driving to (0,5) is free with path (8,7) (7,7) (6,7) (5,7) (4,7) (3,7) (2,7) (1,7) (0,7) (0,6) (0,5) 
-Taxi    7: D. Patrick at (3,5) driving to (8,5) is free with path (4,5) (5,5) (6,5) (7,5) (8,5) 
-Shuttle 8: S. Wolff at (1,1) driving to (5,5) is free with path (2,1) (3,1) (4,1) (5,1) (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (0,6) driving to (6,3) is free with path (1,6) (2,6) (3,6) (4,6) (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (3,8) driving to (1,7) is free with path (2,8) (1,8) (1,7) 
+Taxi    1: L. Hamilton at (3,8) driving to (2,5) is free with path (2,8) (2,7) (2,6) (2,5) 
+Taxi    2: M. Schumacher at (8,9) driving to (9,3) is free with path (9,9) (9,8) (9,7) (9,6) (9,5) (9,4) (9,3) 
+Taxi    3: A. Senna at (2,3) driving to (6,7) is free with path (3,3) (4,3) (5,3) (6,3) (6,4) (6,5) (6,6) (6,7) 
+Shuttle 4: S. Vettel at (6,1) driving to (3,3) is free with path (5,1) (4,1) (3,1) (3,2) (3,3) 
+Taxi    5: M. Verstappen at (1,1) driving to (4,8) is free with path (2,1) (3,1) (4,1) (4,2) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
+Taxi    6: L. Lombardi at (1,5) driving to (9,8) is free with path (2,5) (3,5) (4,5) (5,5) (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (0,6) driving to (9,0) is free with path (1,6) (2,6) (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (9,6) (9,5) (9,4) (9,3) (9,2) (9,1) (9,0) 
+Shuttle 8: S. Wolff at (5,3) driving to (9,6) is free with path (6,3) (7,3) (8,3) (9,3) (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (7,7) driving to (0,3) is free with path (6,7) (5,7) (4,7) (3,7) (2,7) (1,7) (0,7) (0,6) (0,5) (0,4) (0,3) 
+Taxi    10: M. Mouton at (9,9) driving to (2,0) is free with path (8,9) (7,9) (6,9) (5,9) (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 
 
 10 Micro-Mobilities Are Online: 
-Electric Scooter 1: vehicle is idle at (4,4)
-Electric Scooter 2: vehicle is idle at (4,5)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 
 
-User 1 requests a Standard Service  Service from (8,9) to (0,5), the ride is assigned to Taxi 6 at location (9,7)
-User 2 requests a Micro-Mobility Service Service from (3,2) to (7,6), the ride is assigned to ElectricScooter 1 at location (4,4)
-User 3 requests Silent Service from (9,7) to (9,0), the ride is assigned to Taxi 5 at location (7,3)
-User 4 requests a Micro-Mobility Service Service from (9,5) to (5,0), the ride is assigned to ElectricScooter 2 at location (4,5)
-User 5 requests a Standard Service  Service from (6,9) to (8,3), the ride is assigned to Taxi 1 at location (6,7)
+User 1 requests a Standard Service  Service from (1,0) to (5,2), the ride is assigned to Taxi 5 at location (1,1)
+User 2 requests a Standard Service  Service from (3,3) to (8,4), the ride is assigned to Taxi 3 at location (2,3)
+User 3 requests a Standard Service  Service from (7,6) to (0,2), the ride is assigned to Taxi 9 at location (7,7)
+User 4 requests a Standard Service  Service from (7,9) to (8,0), the ride is assigned to Taxi 2 at location (8,9)
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (6,7) driving to (6,9) to pickup user 5
-Taxi    2: M. Schumacher at (0,0) driving to (4,2) is free with path (1,0) (2,0) (3,0) (4,0) (4,1) (4,2) 
-Taxi    3: A. Senna at (1,4) driving to (6,6) is free with path (2,4) (3,4) (4,4) (5,4) (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (6,6) driving to (2,7) is free with path (5,6) (4,6) (3,6) (2,6) (2,7) 
-Taxi    5: M. Verstappen at (7,3) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (9,7) driving to (8,9) to pickup user 1
-Taxi    7: D. Patrick at (3,5) driving to (8,5) is free with path (4,5) (5,5) (6,5) (7,5) (8,5) 
-Shuttle 8: S. Wolff at (1,1) driving to (5,5) is free with path (2,1) (3,1) (4,1) (5,1) (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (0,6) driving to (6,3) is free with path (1,6) (2,6) (3,6) (4,6) (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (3,8) driving to (1,7) is free with path (2,8) (1,8) (1,7) 
+Taxi    1: L. Hamilton at (3,8) driving to (2,5) is free with path (2,8) (2,7) (2,6) (2,5) 
+Taxi    2: M. Schumacher at (8,9) driving to (7,9) to pickup user 4
+Taxi    3: A. Senna at (2,3) driving to (3,3) to pickup user 2
+Shuttle 4: S. Vettel at (6,1) driving to (3,3) is free with path (5,1) (4,1) (3,1) (3,2) (3,3) 
+Taxi    5: M. Verstappen at (1,1) driving to (1,0) to pickup user 1
+Taxi    6: L. Lombardi at (1,5) driving to (9,8) is free with path (2,5) (3,5) (4,5) (5,5) (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (0,6) driving to (9,0) is free with path (1,6) (2,6) (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (9,6) (9,5) (9,4) (9,3) (9,2) (9,1) (9,0) 
+Shuttle 8: S. Wolff at (5,3) driving to (9,6) is free with path (6,3) (7,3) (8,3) (9,3) (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (7,7) driving to (7,6) to pickup user 3
+Taxi    10: M. Mouton at (9,9) driving to (2,0) is free with path (8,9) (7,9) (6,9) (5,9) (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: reserved for user 2, Leonardo DiCaprio
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
-Leonardo, User 2, is walking to micro-mobility vehicle ElectricScooter 1
-Angelina, User 4, is walking to micro-mobility vehicle ElectricScooter 2
-User 3 and 6 are now sharing a ride. From (9,7) and (8,5) to (9,0) and (9,8), the ride is assigned to Taxi 5 at location (8,3)
+Taxi 2 arrived at pickup location 4
+Taxi 3 arrived at pickup location 2
+Taxi 5 arrived at pickup location 1
+Taxi 9 arrived at pickup location 3
+User 5 requests a Standard Service  Service from (1,6) to (4,4), the ride is assigned to Taxi 7 at location (1,6)
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (6,8) driving to (6,9) to pickup user 5
-Taxi    2: M. Schumacher at (1,0) driving to (4,2) is free with path (2,0) (3,0) (4,0) (4,1) (4,2) 
-Taxi    3: A. Senna at (2,4) driving to (6,6) is free with path (3,4) (4,4) (5,4) (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (5,6) driving to (2,7) is free with path (4,6) (3,6) (2,6) (2,7) 
-Taxi    5: M. Verstappen at (8,3) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (8,7) driving to (8,9) to pickup user 1
-Taxi    7: D. Patrick at (4,5) driving to (8,5) is free with path (5,5) (6,5) (7,5) (8,5) 
-Shuttle 8: S. Wolff at (2,1) driving to (5,5) is free with path (3,1) (4,1) (5,1) (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (1,6) driving to (6,3) is free with path (2,6) (3,6) (4,6) (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (2,8) driving to (1,7) is free with path (1,8) (1,7) 
+Taxi    1: L. Hamilton at (2,8) driving to (2,5) is free with path (2,7) (2,6) (2,5) 
+Taxi    2: M. Schumacher at (7,9) driving to (8,0) in service 
+Taxi    3: A. Senna at (3,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (5,1) driving to (3,3) is free with path (4,1) (3,1) (3,2) (3,3) 
+Taxi    5: M. Verstappen at (1,0) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (2,5) driving to (9,8) is free with path (3,5) (4,5) (5,5) (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (1,6) driving to (1,6) to pickup user 5
+Shuttle 8: S. Wolff at (6,3) driving to (9,6) is free with path (7,3) (8,3) (9,3) (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (7,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (8,9) driving to (2,0) is free with path (7,9) (6,9) (5,9) (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: reserved for user 2, Leonardo DiCaprio
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
-Taxi 1 arrived at pickup location 5
-Leonardo, User 2, is walking to micro-mobility vehicle ElectricScooter 1
-Angelina, User 4, is walking to micro-mobility vehicle ElectricScooter 2
+Taxi 7 arrived at pickup location 5
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (6,9) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (2,0) driving to (4,2) is free with path (3,0) (4,0) (4,1) (4,2) 
-Taxi    3: A. Senna at (3,4) driving to (6,6) is free with path (4,4) (5,4) (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (4,6) driving to (2,7) is free with path (3,6) (2,6) (2,7) 
-Taxi    5: M. Verstappen at (9,3) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (8,8) driving to (8,9) to pickup user 1
-Taxi    7: D. Patrick at (5,5) driving to (8,5) is free with path (6,5) (7,5) (8,5) 
-Shuttle 8: S. Wolff at (3,1) driving to (5,5) is free with path (4,1) (5,1) (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (2,6) driving to (6,3) is free with path (3,6) (4,6) (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (1,8) driving to (1,7) is free with path (1,7) 
+Taxi    1: L. Hamilton at (2,7) driving to (2,5) is free with path (2,6) (2,5) 
+Taxi    2: M. Schumacher at (8,9) driving to (8,0) in service 
+Taxi    3: A. Senna at (4,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (4,1) driving to (3,3) is free with path (3,1) (3,2) (3,3) 
+Taxi    5: M. Verstappen at (2,0) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (3,5) driving to (9,8) is free with path (4,5) (5,5) (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (1,6) driving to (4,4) in service 
+Shuttle 8: S. Wolff at (7,3) driving to (9,6) is free with path (8,3) (9,3) (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (6,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (7,9) driving to (2,0) is free with path (6,9) (5,9) (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: reserved for user 2, Leonardo DiCaprio
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
-Taxi 6 arrived at pickup location 1
-Leonardo, User 2, is walking to micro-mobility vehicle ElectricScooter 1
-Angelina, User 4, is walking to micro-mobility vehicle ElectricScooter 2
+User 6 requests a Standard Service  Service from (1,8) to (3,0), the ride is assigned to Taxi 1 at location (2,6)
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (7,9) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (3,0) driving to (4,2) is free with path (4,0) (4,1) (4,2) 
-Taxi    3: A. Senna at (4,4) driving to (6,6) is free with path (5,4) (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (3,6) driving to (2,7) is free with path (2,6) (2,7) 
-Taxi    5: M. Verstappen at (9,4) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (8,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (6,5) driving to (8,5) is free with path (7,5) (8,5) 
-Shuttle 8: S. Wolff at (4,1) driving to (5,5) is free with path (5,1) (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (3,6) driving to (6,3) is free with path (4,6) (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (1,7) driving to (8,3) is free with path (2,7) (3,7) (4,7) (5,7) (6,7) (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
+Taxi    1: L. Hamilton at (2,6) driving to (1,8) to pickup user 6
+Taxi    2: M. Schumacher at (8,8) driving to (8,0) in service 
+Taxi    3: A. Senna at (5,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (3,1) driving to (3,3) is free with path (3,2) (3,3) 
+Taxi    5: M. Verstappen at (3,0) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (4,5) driving to (9,8) is free with path (5,5) (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (2,6) driving to (4,4) in service 
+Shuttle 8: S. Wolff at (8,3) driving to (9,6) is free with path (9,3) (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (5,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (6,9) driving to (2,0) is free with path (5,9) (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: reserved for user 2, Leonardo DiCaprio
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Leonardo, User 2, has arrived at micro-mobility vehicle ElectricScooter 1
-Angelina, User 4, is walking to micro-mobility vehicle ElectricScooter 2
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,9) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (4,0) driving to (4,2) is free with path (4,1) (4,2) 
-Taxi    3: A. Senna at (5,4) driving to (6,6) is free with path (6,4) (6,5) (6,6) 
-Shuttle 4: S. Vettel at (2,6) driving to (2,7) is free with path (2,7) 
-Taxi    5: M. Verstappen at (9,5) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (7,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (7,5) driving to (8,5) is free with path (8,5) 
-Shuttle 8: S. Wolff at (5,1) driving to (5,5) is free with path (5,2) (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (4,6) driving to (6,3) is free with path (5,6) (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (2,7) driving to (8,3) is free with path (3,7) (4,7) (5,7) (6,7) (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: Leonardo DiCaprio, User 2, at (4,4) is driving themself to (7,6)
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Angelina, User 4, is walking to micro-mobility vehicle ElectricScooter 2
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,8) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (4,1) driving to (4,2) is free with path (4,2) 
-Taxi    3: A. Senna at (6,4) driving to (6,6) is free with path (6,5) (6,6) 
-Shuttle 4: S. Vettel at (2,7) driving to (0,6) is free with path (1,7) (0,7) (0,6) 
-Taxi    5: M. Verstappen at (9,6) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (6,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (8,5) driving to (0,5) is free with path (7,5) (6,5) (5,5) (4,5) (3,5) (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (5,2) driving to (5,5) is free with path (5,3) (5,4) (5,5) 
-Taxi    9: J. Chadwick at (5,6) driving to (6,3) is free with path (6,6) (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (3,7) driving to (8,3) is free with path (4,7) (5,7) (6,7) (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: Leonardo DiCaprio, User 2, at (5,4) is driving themself to (7,6)
-Electric Scooter 2: reserved for user 4, Angelina Jolie
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 5 arrived at pickup location 3
-Angelina, User 4, has arrived at micro-mobility vehicle ElectricScooter 2
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,7) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (4,2) driving to (7,3) is free with path (5,2) (6,2) (7,2) (7,3) 
-Taxi    3: A. Senna at (6,5) driving to (6,6) is free with path (6,6) 
-Shuttle 4: S. Vettel at (1,7) driving to (0,6) is free with path (0,7) (0,6) 
-Taxi    5: M. Verstappen at (9,7) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (5,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (7,5) driving to (0,5) is free with path (6,5) (5,5) (4,5) (3,5) (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (5,3) driving to (5,5) is free with path (5,4) (5,5) 
-Taxi    9: J. Chadwick at (6,6) driving to (6,3) is free with path (6,5) (6,4) (6,3) 
-Taxi    10: M. Mouton at (4,7) driving to (8,3) is free with path (5,7) (6,7) (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: Leonardo DiCaprio, User 2, at (6,4) is driving themself to (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (4,5) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 5 arrived at pickup location 3
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,6) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (5,2) driving to (7,3) is free with path (6,2) (7,2) (7,3) 
-Taxi    3: A. Senna at (6,6) driving to (8,1) is free with path (7,6) (8,6) (8,5) (8,4) (8,3) (8,2) (8,1) 
-Shuttle 4: S. Vettel at (0,7) driving to (0,6) is free with path (0,6) 
-Taxi    5: M. Verstappen at (9,7) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (4,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (6,5) driving to (0,5) is free with path (5,5) (4,5) (3,5) (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (5,4) driving to (5,5) is free with path (5,5) 
-Taxi    9: J. Chadwick at (6,5) driving to (6,3) is free with path (6,4) (6,3) 
-Taxi    10: M. Mouton at (5,7) driving to (8,3) is free with path (6,7) (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: Leonardo DiCaprio, User 2, at (7,4) is driving themself to (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (5,5) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 5 arrived at pickup location 3
-User 7 requests a Standard Service  Service from (2,1) to (5,0), the ride is assigned to Taxi 2 at location (6,2)
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,5) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (6,2) driving to (2,1) to pickup user 7
-Taxi    3: A. Senna at (7,6) driving to (8,1) is free with path (8,6) (8,5) (8,4) (8,3) (8,2) (8,1) 
-Shuttle 4: S. Vettel at (0,6) driving to (8,8) is free with path (1,6) (2,6) (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (9,7) driving to (9,7) to pickup user 3
-Taxi    6: L. Lombardi at (3,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (5,5) driving to (0,5) is free with path (4,5) (3,5) (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (5,5) driving to (2,4) is free with path (4,5) (3,5) (2,5) (2,4) 
-Taxi    9: J. Chadwick at (6,4) driving to (6,3) is free with path (6,3) 
-Taxi    10: M. Mouton at (6,7) driving to (8,3) is free with path (7,7) (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: Leonardo DiCaprio, User 2, at (7,5) is driving themself to (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (5,4) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 5 arrived at pickup location 3
-ElectricScooter 1 arrived at destination and is parked by Leonardo, user 2, at location (7,6)
-ElectricScooter1 battery reduced after ride. Current battery level: 75.0%
-User 2 requests a Standard Service  Service from (9,9) to (1,5), the ride is assigned to Taxi 5 at location (9,7)
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,4) driving to (8,3) in service 
-Taxi    2: M. Schumacher at (5,2) driving to (2,1) to pickup user 7
-Taxi    3: A. Senna at (8,6) driving to (8,1) is free with path (8,5) (8,4) (8,3) (8,2) (8,1) 
-Shuttle 4: S. Vettel at (1,6) driving to (8,8) is free with path (2,6) (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (9,7) driving to (9,9) to pickup user 2
-Taxi    6: L. Lombardi at (2,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (4,5) driving to (0,5) is free with path (3,5) (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (4,5) driving to (2,4) is free with path (3,5) (2,5) (2,4) 
-Taxi    9: J. Chadwick at (6,3) driving to (4,8) is free with path (5,3) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    10: M. Mouton at (7,7) driving to (8,3) is free with path (8,7) (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (5,3) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi    1 drops off user 5
-Taxi    1 drops off user 5
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (8,3) driving to (3,0) is free with path (7,3) (6,3) (5,3) (4,3) (3,3) (3,2) (3,1) (3,0) 
-Taxi    2: M. Schumacher at (4,2) driving to (2,1) to pickup user 7
-Taxi    3: A. Senna at (8,5) driving to (8,1) is free with path (8,4) (8,3) (8,2) (8,1) 
-Shuttle 4: S. Vettel at (2,6) driving to (8,8) is free with path (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (9,8) driving to (9,9) to pickup user 2
-Taxi    6: L. Lombardi at (1,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (3,5) driving to (0,5) is free with path (2,5) (1,5) (0,5) 
-Shuttle 8: S. Wolff at (3,5) driving to (2,4) is free with path (2,5) (2,4) 
-Taxi    9: J. Chadwick at (5,3) driving to (4,8) is free with path (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    10: M. Mouton at (8,7) driving to (8,3) is free with path (8,6) (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (5,2) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 5 arrived at pickup location 2
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (7,3) driving to (3,0) is free with path (6,3) (5,3) (4,3) (3,3) (3,2) (3,1) (3,0) 
-Taxi    2: M. Schumacher at (3,2) driving to (2,1) to pickup user 7
-Taxi    3: A. Senna at (8,4) driving to (8,1) is free with path (8,3) (8,2) (8,1) 
-Shuttle 4: S. Vettel at (3,6) driving to (8,8) is free with path (4,6) (5,6) (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (9,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (0,9) driving to (0,5) in service 
-Taxi    7: D. Patrick at (2,5) driving to (0,5) is free with path (1,5) (0,5) 
-Shuttle 8: S. Wolff at (2,5) driving to (2,4) is free with path (2,4) 
-Taxi    9: J. Chadwick at (4,3) driving to (4,8) is free with path (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    10: M. Mouton at (8,6) driving to (8,3) is free with path (8,5) (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: Angelina Jolie, User 4, at (5,1) is driving themself to (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-ElectricScooter 2 arrived at destination and is parked by Angelina, user 4, at location (5,0)
-ElectricScooter2 battery reduced after ride. Current battery level: 75.0%
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (6,3) driving to (3,0) is free with path (5,3) (4,3) (3,3) (3,2) (3,1) (3,0) 
-Taxi    2: M. Schumacher at (2,2) driving to (2,1) to pickup user 7
-Taxi    3: A. Senna at (8,3) driving to (8,1) is free with path (8,2) (8,1) 
-Shuttle 4: S. Vettel at (4,6) driving to (8,8) is free with path (5,6) (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (8,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (0,8) driving to (0,5) in service 
-Taxi    7: D. Patrick at (1,5) driving to (0,5) is free with path (0,5) 
-Shuttle 8: S. Wolff at (2,4) driving to (0,2) is free with path (1,4) (0,4) (0,3) (0,2) 
-Taxi    9: J. Chadwick at (4,4) driving to (4,8) is free with path (4,5) (4,6) (4,7) (4,8) 
-Taxi    10: M. Mouton at (8,5) driving to (8,3) is free with path (8,4) (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi 2 arrived at pickup location 7
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (5,3) driving to (3,0) is free with path (4,3) (3,3) (3,2) (3,1) (3,0) 
-Taxi    2: M. Schumacher at (2,1) driving to (5,0) in service 
-Taxi    3: A. Senna at (8,2) driving to (8,1) is free with path (8,1) 
-Shuttle 4: S. Vettel at (5,6) driving to (8,8) is free with path (6,6) (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (7,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (0,7) driving to (0,5) in service 
-Taxi    7: D. Patrick at (0,5) driving to (6,4) is free with path (1,5) (2,5) (3,5) (4,5) (5,5) (6,5) (6,4) 
-Shuttle 8: S. Wolff at (1,4) driving to (0,2) is free with path (0,4) (0,3) (0,2) 
-Taxi    9: J. Chadwick at (4,5) driving to (4,8) is free with path (4,6) (4,7) (4,8) 
-Taxi    10: M. Mouton at (8,4) driving to (8,3) is free with path (8,3) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,3) driving to (3,0) is free with path (3,3) (3,2) (3,1) (3,0) 
-Taxi    2: M. Schumacher at (3,1) driving to (5,0) in service 
-Taxi    3: A. Senna at (8,1) driving to (2,1) is free with path (7,1) (6,1) (5,1) (4,1) (3,1) (2,1) 
-Shuttle 4: S. Vettel at (6,6) driving to (8,8) is free with path (7,6) (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (6,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (0,6) driving to (0,5) in service 
-Taxi    7: D. Patrick at (1,5) driving to (6,4) is free with path (2,5) (3,5) (4,5) (5,5) (6,5) (6,4) 
-Shuttle 8: S. Wolff at (0,4) driving to (0,2) is free with path (0,3) (0,2) 
-Taxi    9: J. Chadwick at (4,6) driving to (4,8) is free with path (4,7) (4,8) 
-Taxi    10: M. Mouton at (8,3) driving to (0,0) is free with path (7,3) (6,3) (5,3) (4,3) (3,3) (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
+Taxi    1: L. Hamilton at (1,6) driving to (1,8) to pickup user 6
+Taxi    2: M. Schumacher at (8,7) driving to (8,0) in service 
+Taxi    3: A. Senna at (6,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (3,2) driving to (3,3) is free with path (3,3) 
+Taxi    5: M. Verstappen at (4,0) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (5,5) driving to (9,8) is free with path (6,5) (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (3,6) driving to (4,4) in service 
+Shuttle 8: S. Wolff at (9,3) driving to (9,6) is free with path (9,4) (9,5) (9,6) 
+Taxi    9: J. Chadwick at (4,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (5,9) driving to (2,0) is free with path (4,9) (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Taxi    6 drops off user 1
-Taxi    6 drops off user 1
-User 1 requests a Standard Service  Service from (5,4) to (4,1), the ride is assigned to Taxi 1 at location (3,3)
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (3,3) driving to (5,4) to pickup user 1
-Taxi    2: M. Schumacher at (4,1) driving to (5,0) in service 
-Taxi    3: A. Senna at (7,1) driving to (2,1) is free with path (6,1) (5,1) (4,1) (3,1) (2,1) 
-Shuttle 4: S. Vettel at (7,6) driving to (8,8) is free with path (8,6) (8,7) (8,8) 
-Taxi    5: M. Verstappen at (5,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (0,5) driving to (6,4) is free with path (1,5) (2,5) (3,5) (4,5) (5,5) (6,5) (6,4) 
-Taxi    7: D. Patrick at (2,5) driving to (6,4) is free with path (3,5) (4,5) (5,5) (6,5) (6,4) 
-Shuttle 8: S. Wolff at (0,3) driving to (0,2) is free with path (0,2) 
-Taxi    9: J. Chadwick at (4,7) driving to (4,8) is free with path (4,8) 
-Taxi    10: M. Mouton at (7,3) driving to (0,0) is free with path (6,3) (5,3) (4,3) (3,3) (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,3) driving to (5,4) to pickup user 1
-Taxi    2: M. Schumacher at (5,1) driving to (5,0) in service 
-Taxi    3: A. Senna at (6,1) driving to (2,1) is free with path (5,1) (4,1) (3,1) (2,1) 
-Shuttle 4: S. Vettel at (8,6) driving to (8,8) is free with path (8,7) (8,8) 
-Taxi    5: M. Verstappen at (4,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (1,5) driving to (6,4) is free with path (2,5) (3,5) (4,5) (5,5) (6,5) (6,4) 
-Taxi    7: D. Patrick at (3,5) driving to (6,4) is free with path (4,5) (5,5) (6,5) (6,4) 
-Shuttle 8: S. Wolff at (0,2) driving to (6,2) is free with path (1,2) (2,2) (3,2) (4,2) (5,2) (6,2) 
-Taxi    9: J. Chadwick at (4,8) driving to (2,6) is free with path (3,8) (2,8) (2,7) (2,6) 
-Taxi    10: M. Mouton at (6,3) driving to (0,0) is free with path (5,3) (4,3) (3,3) (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
+Taxi    1: L. Hamilton at (1,7) driving to (1,8) to pickup user 6
+Taxi    2: M. Schumacher at (8,6) driving to (8,0) in service 
+Taxi    3: A. Senna at (7,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (3,3) driving to (9,8) is free with path (4,3) (5,3) (6,3) (7,3) (8,3) (9,3) (9,4) (9,5) (9,6) (9,7) (9,8) 
+Taxi    5: M. Verstappen at (5,0) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (6,5) driving to (9,8) is free with path (7,5) (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (4,6) driving to (4,4) in service 
+Shuttle 8: S. Wolff at (9,4) driving to (9,6) is free with path (9,5) (9,6) 
+Taxi    9: J. Chadwick at (3,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (4,9) driving to (2,0) is free with path (3,9) (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
-Taxi    2 drops off user 7
-Taxi    2 drops off user 7
-User 4 requests a Standard Service  Service from (8,9) to (7,2), the ride is assigned to Shuttle 4 at location (8,7)
+Taxi 1 arrived at pickup location 6
 
 --Taxify status Vehicles--
-Taxi    1: L. Hamilton at (5,3) driving to (5,4) to pickup user 1
-Taxi    2: M. Schumacher at (5,0) driving to (4,8) is free with path (4,0) (4,1) (4,2) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (5,1) driving to (2,1) is free with path (4,1) (3,1) (2,1) 
-Shuttle 4: S. Vettel at (8,7) driving to (8,9) to pickup user 4
-Taxi    5: M. Verstappen at (3,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (2,5) driving to (6,4) is free with path (3,5) (4,5) (5,5) (6,5) (6,4) 
-Taxi    7: D. Patrick at (4,5) driving to (6,4) is free with path (5,5) (6,5) (6,4) 
-Shuttle 8: S. Wolff at (1,2) driving to (6,2) is free with path (2,2) (3,2) (4,2) (5,2) (6,2) 
-Taxi    9: J. Chadwick at (3,8) driving to (2,6) is free with path (2,8) (2,7) (2,6) 
-Taxi    10: M. Mouton at (5,3) driving to (0,0) is free with path (4,3) (3,3) (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
+Taxi    1: L. Hamilton at (1,8) driving to (3,0) in service 
+Taxi    2: M. Schumacher at (8,5) driving to (8,0) in service 
+Taxi    3: A. Senna at (8,3) driving to (8,4) in service 
+Shuttle 4: S. Vettel at (4,3) driving to (9,8) is free with path (5,3) (6,3) (7,3) (8,3) (9,3) (9,4) (9,5) (9,6) (9,7) (9,8) 
+Taxi    5: M. Verstappen at (5,1) driving to (5,2) in service 
+Taxi    6: L. Lombardi at (7,5) driving to (9,8) is free with path (8,5) (9,5) (9,6) (9,7) (9,8) 
+Taxi    7: D. Patrick at (4,5) driving to (4,4) in service 
+Shuttle 8: S. Wolff at (9,5) driving to (9,6) is free with path (9,6) 
+Taxi    9: J. Chadwick at (2,6) driving to (0,2) in service 
+Taxi    10: M. Mouton at (3,9) driving to (2,0) is free with path (2,9) (2,8) (2,7) (2,6) (2,5) (2,4) (2,3) (2,2) (2,1) (2,0) 
 
 --Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
+Electric Scooter 1: vehicle is idle at (3,7)
+Electric Scooter 2: vehicle is idle at (3,8)
+Electric Scooter 3: vehicle is idle at (5,2)
+Electric Bike 4: vehicle is idle at (5,9)
+Electric Scooter 5: vehicle is idle at (0,6)
+Electric Scooter 6: vehicle is idle at (9,0)
+Electric Scooter 7: vehicle is idle at (4,0)
+Electric Bike 8: vehicle is idle at (0,9)
+Electric Scooter 9: vehicle is idle at (3,7)
+Electric Scooter 10: vehicle is idle at (0,6)
 --Updates--
-Taxi 1 arrived at pickup location 1
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (5,4) driving to (4,1) in service 
-Taxi    2: M. Schumacher at (4,0) driving to (4,8) is free with path (4,1) (4,2) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (4,1) driving to (2,1) is free with path (3,1) (2,1) 
-Shuttle 4: S. Vettel at (8,8) driving to (8,9) to pickup user 4
-Taxi    5: M. Verstappen at (2,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (3,5) driving to (6,4) is free with path (4,5) (5,5) (6,5) (6,4) 
-Taxi    7: D. Patrick at (5,5) driving to (6,4) is free with path (6,5) (6,4) 
-Shuttle 8: S. Wolff at (2,2) driving to (6,2) is free with path (3,2) (4,2) (5,2) (6,2) 
-Taxi    9: J. Chadwick at (2,8) driving to (2,6) is free with path (2,7) (2,6) 
-Taxi    10: M. Mouton at (4,3) driving to (0,0) is free with path (3,3) (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-Shuttle 4 arrived at pickup location 4
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,4) driving to (4,1) in service 
-Taxi    2: M. Schumacher at (4,1) driving to (4,8) is free with path (4,2) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (3,1) driving to (2,1) is free with path (2,1) 
-Shuttle 4: S. Vettel at (8,9) driving to (7,2) in service 
-Taxi    5: M. Verstappen at (1,9) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (4,5) driving to (6,4) is free with path (5,5) (6,5) (6,4) 
-Taxi    7: D. Patrick at (6,5) driving to (6,4) is free with path (6,4) 
-Shuttle 8: S. Wolff at (3,2) driving to (6,2) is free with path (4,2) (5,2) (6,2) 
-Taxi    9: J. Chadwick at (2,7) driving to (2,6) is free with path (2,6) 
-Taxi    10: M. Mouton at (3,3) driving to (0,0) is free with path (2,3) (1,3) (0,3) (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: vehicle is idle at (9,1)
---Updates--
-User 5 requests a Micro-Mobility Service Service from (9,2) to (6,8), the ride is assigned to ElectricScooter 10 at location (9,1)
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,3) driving to (4,1) in service 
-Taxi    2: M. Schumacher at (4,2) driving to (4,8) is free with path (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (2,1) driving to (6,0) is free with path (3,1) (4,1) (5,1) (6,1) (6,0) 
-Shuttle 4: S. Vettel at (7,9) driving to (7,2) in service 
-Taxi    5: M. Verstappen at (1,8) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (5,5) driving to (6,4) is free with path (6,5) (6,4) 
-Taxi    7: D. Patrick at (6,4) driving to (4,7) is free with path (5,4) (4,4) (4,5) (4,6) (4,7) 
-Shuttle 8: S. Wolff at (4,2) driving to (6,2) is free with path (5,2) (6,2) 
-Taxi    9: J. Chadwick at (2,6) driving to (8,0) is free with path (3,6) (4,6) (5,6) (6,6) (7,6) (8,6) (8,5) (8,4) (8,3) (8,2) (8,1) (8,0) 
-Taxi    10: M. Mouton at (2,3) driving to (0,0) is free with path (1,3) (0,3) (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: reserved for user 5, Christian Bale
---Updates--
-Christian, User 5, is walking to micro-mobility vehicle ElectricScooter 10
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,2) driving to (4,1) in service 
-Taxi    2: M. Schumacher at (4,3) driving to (4,8) is free with path (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (3,1) driving to (6,0) is free with path (4,1) (5,1) (6,1) (6,0) 
-Shuttle 4: S. Vettel at (7,8) driving to (7,2) in service 
-Taxi    5: M. Verstappen at (1,7) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (6,5) driving to (6,4) is free with path (6,4) 
-Taxi    7: D. Patrick at (5,4) driving to (4,7) is free with path (4,4) (4,5) (4,6) (4,7) 
-Shuttle 8: S. Wolff at (5,2) driving to (6,2) is free with path (6,2) 
-Taxi    9: J. Chadwick at (3,6) driving to (8,0) is free with path (4,6) (5,6) (6,6) (7,6) (8,6) (8,5) (8,4) (8,3) (8,2) (8,1) (8,0) 
-Taxi    10: M. Mouton at (1,3) driving to (0,0) is free with path (0,3) (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: reserved for user 5, Christian Bale
---Updates--
-Taxi    1 drops off user 1
-Taxi    1 drops off user 1
-Christian, User 5, has arrived at micro-mobility vehicle ElectricScooter 10
-
---Taxify status Vehicles--
-Taxi    1: L. Hamilton at (4,1) driving to (4,5) is free with path (4,2) (4,3) (4,4) (4,5) 
-Taxi    2: M. Schumacher at (4,4) driving to (4,8) is free with path (4,5) (4,6) (4,7) (4,8) 
-Taxi    3: A. Senna at (4,1) driving to (6,0) is free with path (5,1) (6,1) (6,0) 
-Shuttle 4: S. Vettel at (7,7) driving to (7,2) in service 
-Taxi    5: M. Verstappen at (1,6) driving to (1,5) in service 
-Taxi    6: L. Lombardi at (6,4) driving to (3,2) is free with path (5,4) (4,4) (3,4) (3,3) (3,2) 
-Taxi    7: D. Patrick at (4,4) driving to (4,7) is free with path (4,5) (4,6) (4,7) 
-Shuttle 8: S. Wolff at (6,2) driving to (4,8) is free with path (5,2) (4,2) (4,3) (4,4) (4,5) (4,6) (4,7) (4,8) 
-Taxi    9: J. Chadwick at (4,6) driving to (8,0) is free with path (5,6) (6,6) (7,6) (8,6) (8,5) (8,4) (8,3) (8,2) (8,1) (8,0) 
-Taxi    10: M. Mouton at (0,3) driving to (0,0) is free with path (0,2) (0,1) (0,0) 
-
---Taxify status Micro-Mobilities--
-Electric Scooter 1: vehicle is idle at (7,6)
-Electric Scooter 2: vehicle is idle at (5,0)
-Electric Scooter 3: vehicle is idle at (9,5)
-Electric Bike 4: vehicle is idle at (9,0)
-Electric Scooter 5: vehicle is idle at (2,8)
-Electric Scooter 6: vehicle is idle at (0,5)
-Electric Scooter 7: vehicle is idle at (4,4)
-Electric Bike 8: vehicle is idle at (9,8)
-Electric Scooter 9: vehicle is idle at (2,5)
-Electric Scooter 10: Christian Bale, User 5, at (9,1) is driving themself to (6,8)
---Updates--
-Taxi    5 drops off user 2
-Taxi    5 drops off user 2
+Taxi    3 drops off user 2
+Taxi    3 drops off user 2
+Taxi    5 drops off user 1
+Taxi    5 drops off user 1
+Taxi    7 drops off user 5
+Taxi    7 drops off user 5
 
 
 ---Taxify Vehicle statistics--
-Taxi     1    Lewis Hamilton         |  2 services | 12  km |  24.0 EUR |  1 reviews | 1.00 stars | 
-Taxi     2    Michael Schumacher     |  1 services | 4   km |   8.0 EUR |  1 reviews | 2.00 stars | 
-Taxi     3    Ayrton Senna           |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+Taxi     1    Lewis Hamilton         |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+Taxi     2    Michael Schumacher     |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+Taxi     3    Ayrton Senna           |  1 services | 6   km |  12.0 EUR |  1 reviews | 3.00 stars | 
 Shuttle  4    Sebastian Vettel       |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
-Taxi     5    Max Verstappen         |  1 services | 12  km |  24.0 EUR |  0 reviews | 0.00 stars | 
-Taxi     6    Lella Lombardi         |  1 services | 12  km |  24.0 EUR |  0 reviews | 0.00 stars | 
-Taxi     7    Danica Patrick         |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+Taxi     5    Max Verstappen         |  1 services | 6   km |  12.0 EUR |  1 reviews | 4.00 stars | 
+Taxi     6    Lella Lombardi         |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+Taxi     7    Danica Patrick         |  1 services | 5   km |  10.0 EUR |  0 reviews | 0.00 stars | 
 Shuttle  8    Susie Wolff            |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 Taxi     9    Jamie Chadwick         |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 Taxi    10    Michelle Mouton        |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 
 ---Taxify Micro-Mobility statistics--
-ElectricScooter  1 |  1 services | 8   km |   2.2 EUR |  1 reviews | 2.00 stars | 
-ElectricScooter  2 |  1 services | 9   km |   2.3 EUR |  1 reviews | 4.00 stars | 
+ElectricScooter  1 |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
+ElectricScooter  2 |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 ElectricScooter  3 |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 ElectricBike     4 |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
 ElectricScooter  5 |  0 services | 0   km |   0.0 EUR |  0 reviews | 0.00 stars | 
