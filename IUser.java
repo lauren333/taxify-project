@@ -15,7 +15,6 @@ public interface IUser {
     public void requestService();
     public void rateService(IService service);
     public String toString();
-
     //new fromt sprint 4
     public boolean getPinkServiceEligibility(); //new from sprint 4: applicable if women or child
     public void requestPinkService();
@@ -23,6 +22,5 @@ public interface IUser {
     public boolean isAllowedToShareFlag();
     public boolean isFemale();
     public boolean isChild();
-    
     public void requestMicroMobilityService(); 
 }

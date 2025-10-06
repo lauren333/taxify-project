@@ -3,8 +3,8 @@ package project.taxify;
 public class SharedService implements IService { //new from sprint 4
     private IService primaryService;
     private IService secondaryService;
-    private boolean isPrimaryComplete;
-    private boolean hasStartedSecondary = false;
+    private boolean finishedPrimary = false; 
+    private boolean firstUserPickedup = false;
     public boolean bothUsersPickedUp = false;
     private int stars;
     public int initialStars = 0;
@@ -19,42 +19,42 @@ public class SharedService implements IService { //new from sprint 4
     }
 
     public int calculateDistance() {
-        if (isPrimaryComplete) { 
+        if (finishedPrimary) { 
             return Math.abs(secondaryService.getPickupLocation().getX() - secondaryService.getDropoffLocation().getX()) 
-                + Math.abs(secondaryService.getPickupLocation().getY() - secondaryService.getDropoffLocation().getY());
+                + Math.abs(secondaryService.getPickupLocation().getY() - secondaryService.getDropoffLocation().getY()) / 1;
         } else { 
             return Math.abs(primaryService.getPickupLocation().getX() - primaryService.getDropoffLocation().getX()) 
-                + Math.abs(primaryService.getPickupLocation().getY() - primaryService.getDropoffLocation().getY());
+                + Math.abs(primaryService.getPickupLocation().getY() - primaryService.getDropoffLocation().getY()) / 1;
         }
     }
 
     @Override
     public IUser getUser(){ //is the first drop off complete?  
-        return this.isPrimaryComplete ? this.secondaryService.getUser() : this.primaryService.getUser();
+        return this.finishedPrimary ? this.secondaryService.getUser() : this.primaryService.getUser();
     }
 
-    public void markPrimaryComplete() {
-        this.isPrimaryComplete = true;
+    public void updateLeg() {
+        this.finishedPrimary = true;
     }
 
-    public void markSecondaryStarted() {
-        this.hasStartedSecondary = true;
-    } 
+    public void updateFirstUserPickedup(){
+        this.firstUserPickedup = true; 
+    }
 
     public boolean isPrimaryComplete() {
-        return isPrimaryComplete;
+        return finishedPrimary;
     }
 
-    public boolean hasStartedSecondary() {
-        return hasStartedSecondary;
+    public boolean hasfirstUserPickedup() {
+        return firstUserPickedup;
     }
 
     public ILocation getPickupLocation(){
-        return hasStartedSecondary ? secondaryService.getPickupLocation() : primaryService.getPickupLocation();
+        return this.hasfirstUserPickedup() ? secondaryService.getPickupLocation() : primaryService.getPickupLocation();
     }
 
     public ILocation getDropoffLocation(){
-        return isPrimaryComplete ? secondaryService.getDropoffLocation() : primaryService.getDropoffLocation();
+        return this.finishedPrimary ? secondaryService.getDropoffLocation() : primaryService.getDropoffLocation();
     }
 
     @Override
@@ -64,7 +64,7 @@ public class SharedService implements IService { //new from sprint 4
 
     @Override
     public void setStars(int stars){
-        if (!hasStartedSecondary) {
+        if (!finishedPrimary) {
             this.initialStars = stars;
             this.AtLeastOneReviewedFlag = true;
             return;
@@ -78,7 +78,7 @@ public class SharedService implements IService { //new from sprint 4
     }
 
     public String toString(){
-        if (hasStartedSecondary) {
+        if (hasfirstUserPickedup()) {
             return secondaryService.getPickupLocation().toString() + " to " +
                    primaryService.getDropoffLocation().toString() + " and " +
                    secondaryService.getDropoffLocation().toString();
