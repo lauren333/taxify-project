@@ -144,7 +144,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
             // Reduce battery level after the ride is complete
             this.batteryLevel -= 25;
         }
-        System.out.println(this.getClass().getSimpleName() + this.id + " battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
+        System.out.println(this.getClass().getSimpleName() + " " + this.id + " battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
         // Ensure the user's location is updated to the destination when the ride ends
     }
 
