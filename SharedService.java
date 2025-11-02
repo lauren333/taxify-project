@@ -1,4 +1,3 @@
-package project.taxify;
 
 public class SharedService implements IService { //new from sprint 4
     private IService primaryService;
@@ -20,17 +19,20 @@ public class SharedService implements IService { //new from sprint 4
 
     public int calculateDistance() {
         if (finishedPrimary) { 
-            return Math.abs(secondaryService.getPickupLocation().getX() - secondaryService.getDropoffLocation().getX()) 
-                + Math.abs(secondaryService.getPickupLocation().getY() - secondaryService.getDropoffLocation().getY()) / 1;
+            return (Math.abs(this.secondaryService.getPickupLocation().getX() - this.secondaryService.getDropoffLocation().getX()) 
+                + Math.abs(this.secondaryService.getPickupLocation().getY() - this.secondaryService.getDropoffLocation().getY()) ) / 1;
         } else { 
-            return Math.abs(primaryService.getPickupLocation().getX() - primaryService.getDropoffLocation().getX()) 
-                + Math.abs(primaryService.getPickupLocation().getY() - primaryService.getDropoffLocation().getY()) / 1;
+            return (Math.abs(this.primaryService.getPickupLocation().getX() - this.primaryService.getDropoffLocation().getX()) 
+                + Math.abs(this.primaryService.getPickupLocation().getY() - this.primaryService.getDropoffLocation().getY()) ) / 1;
         }
     }
 
     @Override
     public IUser getUser(){ //is the first drop off complete?  
-        return this.finishedPrimary ? this.secondaryService.getUser() : this.primaryService.getUser();
+        if (!this.isPrimaryComplete())
+            return this.primaryService.getUser();
+        else
+            return this.secondaryService.getUser();
     }
 
     public void updateLeg() {
@@ -50,11 +52,16 @@ public class SharedService implements IService { //new from sprint 4
     }
 
     public ILocation getPickupLocation(){
-        return this.hasfirstUserPickedup() ? secondaryService.getPickupLocation() : primaryService.getPickupLocation();
+        if (this.hasfirstUserPickedup())
+            return secondaryService.getPickupLocation();
+        return primaryService.getPickupLocation();
     }
 
     public ILocation getDropoffLocation(){
-        return this.finishedPrimary ? secondaryService.getDropoffLocation() : primaryService.getDropoffLocation();
+        if (this.finishedPrimary)
+            return secondaryService.getDropoffLocation();
+        else
+            return primaryService.getDropoffLocation();
     }
 
     @Override
@@ -78,15 +85,9 @@ public class SharedService implements IService { //new from sprint 4
     }
 
     public String toString(){
-        if (hasfirstUserPickedup()) {
-            return secondaryService.getPickupLocation().toString() + " to " +
-                   primaryService.getDropoffLocation().toString() + " and " +
-                   secondaryService.getDropoffLocation().toString();
-        } else {
-            return primaryService.getPickupLocation().toString() + " and " +
-                   secondaryService.getPickupLocation().toString() + " to " +
-                   primaryService.getDropoffLocation().toString() + " and " +
-                   secondaryService.getDropoffLocation().toString();
-        }
+        if (this.hasfirstUserPickedup())
+            return this.secondaryService.getPickupLocation().toString() + " to " + primaryService.getDropoffLocation().toString() + " and " + secondaryService.getDropoffLocation().toString();
+        else
+            return this.primaryService.getPickupLocation().toString() + " and " + this.secondaryService.getPickupLocation().toString() + " to " + primaryService.getDropoffLocation().toString() + " and " + secondaryService.getDropoffLocation().toString();
     }
 }

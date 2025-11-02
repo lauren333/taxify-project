@@ -1,5 +1,3 @@
-package project.taxify;
-
 import java.time.LocalDate;
 
 //new from sprint 4

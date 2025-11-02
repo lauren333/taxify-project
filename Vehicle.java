@@ -1,5 +1,3 @@
-package project.taxify;
-
 import java.util.List;
 
 public abstract class Vehicle implements IVehicle {
@@ -12,6 +10,8 @@ public abstract class Vehicle implements IVehicle {
     private IStatistics statistics;
     private IRoute route;
     private IDriver driver; //new from sprint 4
+    private List<IService> serviceList;
+
         
     public Vehicle(int id, ILocation location) {        
         this.id = id;

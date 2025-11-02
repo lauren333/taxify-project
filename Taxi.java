@@ -1,4 +1,3 @@
-package project.taxify;
 
 public class Taxi extends Vehicle { //New subclass from Sprint 2  
     private static final double RATE = 2.0; // 2 euros per block

@@ -1,8 +1,5 @@
-package project.taxify;
 import java.util.List;
 //SPRINT 3: NEW CLASS
-
-import project.taxify.MicroMobility.IMicroMobilityVehicle;
 
 public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     private ITaxiCompany company;
@@ -92,9 +89,10 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
             } 
                           
             if (ApplicationLibrary.rand() % 5 == 0){
-                user.requestSilentService();
-                break;
-            }
+                 user.requestSilentService();
+                 break;
+             
+           }
             if (ApplicationLibrary.rand() % 3 == 0){
                 user.requestMicroMobilityService();
                 break;

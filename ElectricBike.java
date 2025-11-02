@@ -1,5 +1,3 @@
-package project.taxify.MicroMobility;
-import project.taxify.ILocation;
 //import project.taxify.VehicleStatus;
 
 

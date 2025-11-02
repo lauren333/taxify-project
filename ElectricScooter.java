@@ -1,6 +1,4 @@
-package project.taxify.MicroMobility;
-import project.taxify.ILocation;
-//import project.taxify.VehicleStatus;
+
 
 public class ElectricScooter extends MicroMobilityVehicle {
     private static final double RATE = 0.15;
@@ -16,11 +14,7 @@ public class ElectricScooter extends MicroMobilityVehicle {
             this.chargeBattery();    // Recharge battery
             this.ridecount = 0;      // Reset ride count after charging
         }
-        if (this.batteryLevel < 100.0) {
-            System.err.println("Electric Scooter " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
-            this.chargeBattery();
-        }
-        if (this.batteryLevel <= 25.0) {
+        if (this.batteryLevel < 50) {
             System.err.println("Electric Scooter " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
             this.chargeBattery();
         }

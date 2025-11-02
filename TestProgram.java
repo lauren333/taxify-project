@@ -1,13 +1,7 @@
-package project.taxify;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import project.taxify.MicroMobility.ElectricBike;
-import project.taxify.MicroMobility.ElectricScooter;
-import project.taxify.MicroMobility.IMicroMobilityVehicle;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -50,7 +44,8 @@ public class TestProgram {
     public static void main(String[] args) {
         // Redirect output to taxify_output.txt file (overwrites)
         try {
-            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/SoftwareEng/project/taxify/taxify_output2.txt", false));
+            
+            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/project/taxify/taxify_output2.txt", false));
             System.setOut(fileOut);
             System.setErr(fileOut); // redirect error output
         } catch (FileNotFoundException e) {

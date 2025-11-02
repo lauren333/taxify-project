@@ -1,7 +1,5 @@
-package project.taxify;
 import java.util.List;
 import java.util.ArrayList; //sprint 4
-import project.taxify.MicroMobility.*; //sprint 5
 
 //SPRINT 3: NEW CLASS 
 
@@ -12,7 +10,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     private List<IMicroMobilityVehicle> microMobilityVehicles; //new from sprint 5
     private int totalServices;
     //IOBSERVER INTERFACE ENSURES ANY CLASSES IMPLEMENTENTING IT DEFINES THE updateObserver(string message) METHOD
-    //WHY? IT ALLOWS DIFFERENT CLASSES TO RESPOND TO UPDATES IN THE TaxiCompany CLASS
+    //IT ALLOWS DIFFERENT CLASSES TO RESPOND TO UPDATES IN THE TaxiCompany CLASS
     //taxi company is the subject and the vehciles are the observers
     private IObserver observer;
     
@@ -200,7 +198,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     //NEW FOR SPRINT 5 
      ///*
     private int closestMicroMobilityVehicle(List<IMicroMobilityVehicle> microMobilityVehicles, ILocation location) {
-        int currentClosestDistance = Integer.MAX_VALUE;
+        int currentClosestDistance = 9999;
         int closestIndex = -1;
 
         if (microMobilityVehicles.isEmpty()) { // if list is empty
@@ -219,7 +217,8 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
                 closestIndex = i;
             }
         }
-        return closestIndex;
+        IMicroMobilityVehicle mvehicle = microMobilityVehicles.get(closestIndex);
+        return this.microMobilityVehicles.indexOf(mvehicle);
     }
     
 
@@ -228,35 +227,44 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
      
     @Override
     public boolean provideMicroMobilityService(int userId, ILocation origin, ILocation destination){ 
+        
         int requestingUserIndex = findUserIndex(userId);
-        //IUser user = users.get(requestingUserIndex);
+        IUser user = users.get(requestingUserIndex);
 
         // List of available micro-mobility vehicles
         List<IMicroMobilityVehicle> freeMicroMobilityVehicles = this.listOfFreeMicroMobilityVehicles(this.microMobilityVehicles);
         int closestMMVehicleIndex = closestMicroMobilityVehicle(freeMicroMobilityVehicles, origin);
 
+        
         if (closestMMVehicleIndex == -1) {
             return false; // No available micro-mobility vehicle
         }
+        user.setService(true);
+        IService service = RideServiceTypeFactory.createMicroMobilityService(user, origin, destination);
 
-        if (closestMMVehicleIndex != -1) {   // If a vehicle is found, update the user status and create a service 
-            this.users.get(requestingUserIndex).setService(true);
-            IService service = RideServiceTypeFactory.createMicroMobilityService(this.users.get(requestingUserIndex), origin, destination);
+        //assign and reserve MMvehicle 
+        this.microMobilityVehicles.get(closestMMVehicleIndex).reserve(service); 
 
-            //assign and reserve MMvehicle 
-            this.microMobilityVehicles.get(closestMMVehicleIndex).reserve(service); 
-
-            notifyObserver("User " + this.users.get(requestingUserIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() +
+        notifyObserver("User " + this.users.get(requestingUserIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() +
                             ", the ride is assigned to " + this.microMobilityVehicles.get(closestMMVehicleIndex).getClass().getSimpleName() +
                             " " + this.microMobilityVehicles.get(closestMMVehicleIndex).getId() + " at location " + this.microMobilityVehicles.get(closestMMVehicleIndex).getLocation().toString());
 
-            // update the counter of services I NEED TO ADD LOGIC FOR THIS I ASSUME         
-            this.totalServices++;            
-            return true; 
-        }
-        return false; 
+        // update the counter of services I NEED TO ADD LOGIC FOR THIS I ASSUME         
+        this.totalServices++;            
+        return true; 
     }
      
+    private List<IVehicle> listOfOccupiedVehicles(){
+        List<IVehicle> occupiedVehicleList = new ArrayList<IVehicle>();
+        for (int i = 0; i < this.vehicles.size(); i++){
+            IVehicle vehicle  = this.vehicles.get(i);
+            if (!vehicle.isFree()){
+                occupiedVehicleList.add(vehicle);
+            }
+        }
+        return occupiedVehicleList;
+    }
+
     private List<IVehicle> shareShameDropoff(ILocation location){
         List<IVehicle> occupiedVehicles = listOfOccupiedVehicles();
         List<IVehicle> sameDropOffList = new ArrayList<IVehicle>();
@@ -284,7 +292,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         IVehicle vehicle = this.vehicles.get(vehicleIndex);
 
         if (!vehicle.isFree() && vehicle.getService().getUser().isAllowedToShareFlag() && !vehicle.isSharing()){
-            return provideSharedService(user, origin, destination, vehicle);
+            return provideSharedService(requestingUsersIndex, origin, destination, vehicle);
         }
 
         //if (provideSharedService(user, origin, destination)){
@@ -376,7 +384,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         // Mark the  service as started 
 
         if (vehicle.getStatus() == VehicleStatus.SERVICE)
-            sharedService.updateFirstUserPickedUp();
+            sharedService.updateFirstUserPickedup();
 
         vehicle.pickService(sharedService);
         this.users.get(userId).setService(true);

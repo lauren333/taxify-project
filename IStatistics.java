@@ -1,5 +1,3 @@
-package project.taxify;
-
 public interface IStatistics {
     public int getServices();
     public int getReviews();

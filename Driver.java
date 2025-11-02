@@ -1,4 +1,3 @@
-package project.taxify;
 import java.time.LocalDate;
  
 //SPRINT 4: Define the interface IDriver and implement the class Driver to manage basic information about the driver’s profile

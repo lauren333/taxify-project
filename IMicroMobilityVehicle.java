@@ -1,9 +1,3 @@
-package project.taxify.MicroMobility;
-import project.taxify.ILocation;
-import project.taxify.IService;
-import project.taxify.IStatistics;
-import project.taxify.VehicleStatus;
-import project.taxify.ITaxiCompany;
 //import project.taxify.IUser;
 
 public interface IMicroMobilityVehicle{

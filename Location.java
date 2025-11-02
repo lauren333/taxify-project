@@ -1,5 +1,3 @@
-package project.taxify;
-
 public class Location implements ILocation {
     private int x;
     private int y;

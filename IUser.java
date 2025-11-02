@@ -1,4 +1,3 @@
-package project.taxify;
 import java.time.LocalDate;
 //import project.taxify.MicroMobility.IMicroMobilityVehicle;
 

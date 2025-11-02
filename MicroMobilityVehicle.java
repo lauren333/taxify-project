@@ -1,15 +1,3 @@
-package project.taxify.MicroMobility;
-import project.taxify.ApplicationLibrary;
-import project.taxify.ILocation;
-import project.taxify.IRoute;
-import project.taxify.IService;
-import project.taxify.Statistics;
-import project.taxify.IStatistics;
-import project.taxify.ITaxiCompany;
-import project.taxify.IUser;
-import project.taxify.Route;
-import project.taxify.VehicleStatus;
-
 public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
     protected static final double RESERVATION_FEE = 1.0;
     protected int id;
@@ -101,7 +89,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         this.route = new Route(this.destination, this.location); 
         reserved = true;
         status = VehicleStatus.PICKUP;
-        //System.out.println("Reserved. Your Fee for Reservation: " + RESERVATION_FEE + "€");
+        // System.out.println("Reserved for " + service.getUser().getFirstName() + ". Your Fee for Reservation: " + RESERVATION_FEE + "€");
     }
   
     @Override
@@ -141,14 +129,14 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         this.company.arrivedAtDropoffLocation2(this);
         this.endRide();
 
-        // Reduce battery level after the ride is complete
-        this.batteryLevel -= 25;
-        System.out.println(this.getClass().getSimpleName() + this.id + " battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
-
         // Ensure battery doesn't go below 0%
-        if (this.batteryLevel < 0) {
+        if (this.batteryLevel < 25) {
             this.batteryLevel = 0;
-        } 
+        } else {
+            // Reduce battery level after the ride is complete
+            this.batteryLevel -= 25;
+        }
+        System.out.println(this.getClass().getSimpleName() + this.id + " battery reduced after ride. Current battery level: " + this.batteryLevel + "%");
         // Ensure the user's location is updated to the destination when the ride ends
     }
 
@@ -158,7 +146,7 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
         if (this.status == VehicleStatus.PICKUP) {
             if (this.route.hasLocations()) {
                 // Simulate user approaching the vehicle
-                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", is walking to micro-mobility vehicle " + this.getClass().getSimpleName() + " " + this.id);
+                System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", is walking to micro-mobility vehicle from " + this.getClass().getSimpleName() + " " + this.id);
                 this.route.getNextLocation(); // just progress the route
             } else {
                 //System.out.println(service.getUser().getFirstName() + ", User " + service.getUser().getId() + ", has arrived at micro-mobility vehicle " + this.getClass().getSimpleName() + " " + this.id);

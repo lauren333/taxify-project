@@ -1,4 +1,3 @@
-package project.taxify;
 
 public interface IVehicle extends IMovable {
     public int getId();

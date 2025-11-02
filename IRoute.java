@@ -1,5 +1,3 @@
-package project.taxify;
-
 public interface IRoute {
 
     public boolean hasLocations();

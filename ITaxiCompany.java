@@ -1,7 +1,3 @@
-package project.taxify;
-
-import project.taxify.MicroMobility.IMicroMobilityVehicle;
-
 public interface ITaxiCompany {
     public String getName();    
     public int getTotalServices();

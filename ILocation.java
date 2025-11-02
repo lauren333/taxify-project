@@ -1,5 +1,3 @@
-package project.taxify;
-
 public interface ILocation {
 
     public int getX();

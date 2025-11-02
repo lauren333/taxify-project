@@ -1,4 +1,3 @@
-package project.taxify;
 //SPRINT 3: NEW INTERFACE 
 
 public interface IObserver {

@@ -1,4 +1,3 @@
-package project.taxify;
 /* 
     NEW FROM SPRINT 4: Factory design is the best option, Ive tried stratedgy and decorator but this is the most simple and 
     requires less files / interfaces

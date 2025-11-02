@@ -1,4 +1,3 @@
-package project.taxify;
 
 public class Shuttle extends Vehicle { //New subclass from Sprint 2 
     private double RATE = 1.5; // 1.5 euros per block

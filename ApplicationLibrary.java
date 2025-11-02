@@ -1,4 +1,3 @@
-package project.taxify;
 import java.util.Random;
 
 public class ApplicationLibrary {
