@@ -2,6 +2,21 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import actors.Driver;
+import actors.IDriver;
+import actors.IUser;
+import actors.User;
+import core.ApplicationLibrary;
+import core.ApplicationSimulator;
+import core.TaxiCompany;
+import vehicles.ElectricBike;
+import vehicles.ElectricScooter;
+import vehicles.IMicroMobilityVehicle;
+import vehicles.IVehicle;
+import vehicles.Shuttle;
+import vehicles.Taxi;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;

@@ -1,0 +1,28 @@
+package actors;
+import java.time.LocalDate;
+
+import core.ITaxiCompany;
+import services.IService;
+
+public interface IUser {
+
+    public int getId();
+    public String getFirstName();
+    public String getLastName();
+    public char getGender();
+    public LocalDate getBirthDate();
+    public boolean getService();
+    public void setService(boolean service);
+    public void setCompany(ITaxiCompany company);
+    public void requestService();
+    public void rateService(IService service);
+    public String toString();
+    //new fromt sprint 4
+    public boolean getPinkServiceEligibility(); //new from sprint 4: applicable if women or child
+    public void requestPinkService();
+    public void requestSilentService();
+    public boolean isAllowedToShareFlag();
+    public boolean isFemale();
+    public boolean isChild();
+    public void requestMicroMobilityService(); 
+}

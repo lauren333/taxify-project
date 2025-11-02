@@ -1,0 +1,31 @@
+package vehicles;
+import actors.IDriver;
+import core.ITaxiCompany;
+import navigation.ILocation;
+import navigation.IMovable;
+import services.IService;
+import statistics.IStatistics;
+
+public interface IVehicle extends IMovable {
+    public int getId();
+    public ILocation getLocation();
+    public ILocation getDestination();
+    public IService getService();
+    public IStatistics getStatistics();
+    public void setCompany(ITaxiCompany company);
+    public void pickService(IService service);
+    public void startService();
+    public void endService();
+    public void notifyArrivalAtPickupLocation();
+    public void notifyArrivalAtDropoffLocation();
+    public boolean isFree();
+    public double calculateCost();
+    public String toString();
+
+    //new from sprint 4 
+    public IDriver getDriver();
+    public void setDriver(IDriver driver); 
+    public boolean isSharing();
+    public VehicleStatus getStatus();
+}
+ 
