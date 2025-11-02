@@ -3,7 +3,8 @@
 Taxify is a Java-based simulation of a ride service platform featuring two main service types:
 - Vehicles: taxis and shuttles
 - Micro-mobility vehicles: electric scooters and bikes
-Users can request rides with one of four service types— regular, shared (carpooling), pink (reserved for women and children), or silent (quiet rides)—which apply only to vehicles (not micro-mobility). Service types are individual, not combinable.
+  
+Users can request rides with one of four service types— regular, shared (carpooling), pink (reserved for women and children), or silent (quiet rides)— which apply only to vehicles (not micro-mobility). Service types are individual, not combinable.
 
 The simulation assigns the nearest available vehicle or micro-mobility unit on a 10x10 grid and tracks detailed vehicle activity, including total distance traveled, revenue earned, and number of completed rides. Micro-mobility users must walk to the vehicle before starting the ride. All activity is logged to a structured file.
 
