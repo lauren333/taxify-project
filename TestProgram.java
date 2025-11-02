@@ -45,7 +45,7 @@ public class TestProgram {
         // Redirect output to taxify_output.txt file (overwrites)
         try {
             
-            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/project/taxify/taxify_output2.txt", false));
+            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/project/taxify/taxify_output.txt", false));
             System.setOut(fileOut);
             System.setErr(fileOut); // redirect error output
         } catch (FileNotFoundException e) {
