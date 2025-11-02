@@ -13,12 +13,12 @@ The simulation assigns the nearest available vehicle or micro-mobility unit on a
 - Vehicle ride types: Supports individual ride options— Regular, Shared, Pink, Silent
 - Shared ride logic: A ride becomes shared only when one user is already in transit and another user requests a shared ride that is accepted by both. Users may have the same or different destinations
 - Micro-mobility rides: Scooters and bikes require walking to the vehicle and include battery tracking
--Fixed datatset of 10 predefined users and 20 vehicles (10 vehicles, and 10 MM Vehicles)
--Developed randomized probabilistic logic for assigning drivers to vehicles, vehicles type (shuttle vs. taxi or e-scooter vs. e-bike), users service-type request (regular, shared, silent, pink, or a micro-mobility vehicle)
--Simulates real-time activity on a 10x10 grid with nearest-vehicle assignment
--Developed randomized probabilistic logic for assigning drivers to vehicles, vehicles type (shuttle vs. taxi or e-scooter vs. e-bike), users service-type request (regular, shared, silent, pink, or a micro-mobility vehicle)
--Tracks stats per vehicle: distance traveled, revenue generated, number of rides
--Simulation data output to a structured file (overwritten with each run)
+- Fixed datatset of 10 predefined users and 20 vehicles (10 vehicles, and 10 MM Vehicles)
+- Developed randomized probabilistic logic for assigning drivers to vehicles, vehicles type (shuttle vs. taxi or e-scooter vs. e-bike), users service-type request (regular, shared, silent, pink, or a micro-mobility vehicle)
+- Simulates real-time activity on a 10x10 grid with nearest-vehicle assignment
+- Developed randomized probabilistic logic for assigning drivers to vehicles, vehicles type (shuttle vs. taxi or e-scooter vs. e-bike), users service-type request (regular, shared, silent, pink, or a micro-mobility vehicle)
+- Tracks stats per vehicle: distance traveled, revenue generated, number of rides
+- Simulation data output to a structured file (overwritten with each run)
 
 ### Fare structure:
 - Taxi: 2.00 per block
