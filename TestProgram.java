@@ -21,39 +21,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-/* 
-    // SPRINT 3: NEW CODE 
-
-    The test program declares users and vehicles, these lists are shared by the taxi company (taxify) and the simulator (application). 
-
-    TaxiCompany is part of ApplicationSimulator. This is why the instance of the class ApplicationSimulator gets the taxi company 
-    as a parameter in the constructor method. ApplicationSimulator is an observer of TaxiCompany, the application is added using 
-    addObserver().
-
-    Declare a list of users. Instantiate at least 15 users.
-
-    Declare a list of vehicles. Instantiate at least 10 vehicles (Taxis and Shuttles) and locate them at random locations of the city map.
-    Instantiate the taxi company and the application simulator. Add the application simulator as an observer of the taxy company.
-    The simulation begins with at least 5 requests of service, and ends when all vehicles end their services. 
-    Show the status of the application each iteration and update its state. Simulate a request of a service randomly, 
-    to avoid requesting a service each iteration.
-
-    Finally, show the statistics.
-
-    Statistics output: 
-        Taxi     1  3 services  18 km. 36.0 eur.  1 reviews 4.0  stars
-        Shuttle  2  4 services  30 km. 45.0 eur.  2 reviews 2.5  stars
-        Taxi     3  3 services  22 km. 44.0 eur.  2 reviews 3.0  stars
-        Taxi     4  4 services  30 km. 60.0 eur.  3 reviews 3.67 stars
-        Taxi     5  4 services  38 km. 76.0 eur.  2 reviews 4.5  stars
-        Shuttle  6  5 services  32 km. 48.0 eur.  1 reviews 5.0  stars
-        Shuttle  7  7 services  41 km. 61.5 eur.  3 reviews 3.67 stars
-        Taxi     8  3 services  23 km. 46.0 eur.  1 reviews 2.0  stars
-        Taxi     9  5 services  26 km. 52.0 eur.  1 reviews 5.0  stars
-        Taxi    10  5 services  41 km. 82.0 eur.  3 reviews 3.67 stars
-
- */
-
 public class TestProgram {
 
     public static void main(String[] args) {
