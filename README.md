@@ -21,9 +21,76 @@ The simulation assigns the nearest available vehicle or micro-mobility unit on a
 - Tracks stats per vehicle: distance traveled, revenue generated, number of rides
 - Simulation data output to a structured file (overwritten with each run)
 
-### Fare structure:
+#### Fare structure:
 - Taxi: 2.00 per block
 - Shuttle: 1.50 per block
 - Bike: 0.25 per block + 1.00 reservation fee
 - Scooter: 0.15 per block + 1.00 reservation fee
 - 20% discount for Shared rides
+
+## Sprint Documentation
+
+This project was developed over five iterative sprints. The diagrams below illustrate the evolution of the system architecture and design throughout the development process.
+
+---
+
+### Sprint 1 – Initial System Design
+
+<p align="center">
+  <img src="uml_documentation/Sprint1_UML_class.png" width="800">
+</p>
+
+**Use Case Diagram**
+
+<p align="center">
+  <img src="uml_documentation/Sprint1_Use_Case.png" width="800">
+</p>
+
+- Established the initial class structure
+- Defined user interactions with the system
+- Designed the vehicle assignment workflow
+
+---
+
+### Sprint 2 – Service Interaction Design
+
+<p align="center">
+  <img src="uml_documentation/Sequence_Diagram1.png" width="800">
+</p>
+
+- Modeled ride request processing
+- Defined communication between system components
+- Refined service assignment logic
+
+---
+
+### Sprint 3 – Shared Ride Workflow
+
+<p align="center">
+  <img src="uml_documentation/Sequence_Diagram2.png" width="800">
+</p>
+
+- Implemented shared ride interactions
+- Added user acceptance workflow
+- Improved ride coordination
+
+---
+
+### Sprint 4 – Micro-Mobility Architecture
+
+<p align="center">
+  <img src="uml_documentation/Sprint4_UML_Class.png" width="800">
+</p>
+
+- Added e-bike and e-scooter support
+- Implemented battery tracking
+- Added walking-to-vehicle functionality
+
+---
+
+### Sprint 5 – Final System Architecture
+
+<p align="center">
+  <img src="uml_documentation/Sprint5_UML_class.png" width="800">
+</p>
+
