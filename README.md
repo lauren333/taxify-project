@@ -37,13 +37,13 @@ This project was developed over five iterative sprints. The diagrams below illus
 ### Sprint 1 – Initial System Design
 
 <p align="center">
-  <img src="uml_documentation/Sprint1_UML_class.png" width="800">
+  <img src="uml_documentation/Sprint1_UML_class.png" width="500">
 </p>
 
 **Use Case Diagram**
 
 <p align="center">
-  <img src="uml_documentation/Sprint1_Use_Case.png" width="800">
+  <img src="uml_documentation/Sprint1_Use_Case.png" width="500">
 </p>
 
 - Established the initial class structure
@@ -55,7 +55,7 @@ This project was developed over five iterative sprints. The diagrams below illus
 ### Sprint 2 – Service Interaction Design
 
 <p align="center">
-  <img src="uml_documentation/Sequence_Diagram1.png" width="800">
+  <img src="uml_documentation/Sequence_Diagram1.png" width="500">
 </p>
 
 - Modeled ride request processing
@@ -67,7 +67,7 @@ This project was developed over five iterative sprints. The diagrams below illus
 ### Sprint 3 – Shared Ride Workflow
 
 <p align="center">
-  <img src="uml_documentation/Sequence_Diagram2.png" width="800">
+  <img src="uml_documentation/Sequence_Diagram2.png" width="500">
 </p>
 
 - Implemented shared ride interactions
@@ -79,7 +79,7 @@ This project was developed over five iterative sprints. The diagrams below illus
 ### Sprint 4 – Micro-Mobility Architecture
 
 <p align="center">
-  <img src="uml_documentation/Sprint4_UML_Class.png" width="800">
+  <img src="uml_documentation/Sprint4_UML_Class.png" width="500">
 </p>
 
 - Added e-bike and e-scooter support
