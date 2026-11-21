@@ -15,7 +15,7 @@ public class ElectricScooter extends MicroMobilityVehicle {
             this.chargeBattery();    // Recharge battery
             this.ridecount = 0;      // Reset ride count after charging
         }
-        if (this.batteryLevel < 50) {
+        if (this.batteryLevel <= 50) {
             System.err.println("Electric Scooter " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
             this.chargeBattery();
         }

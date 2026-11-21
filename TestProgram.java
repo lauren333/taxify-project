@@ -10,6 +10,7 @@ import actors.User;
 import core.ApplicationLibrary;
 import core.ApplicationSimulator;
 import core.TaxiCompany;
+
 import vehicles.ElectricBike;
 import vehicles.ElectricScooter;
 import vehicles.IMicroMobilityVehicle;
@@ -26,12 +27,13 @@ public class TestProgram {
     public static void main(String[] args) {
         // Redirect output to taxify_output.txt file (overwrites)
         try {
-            
-            PrintStream fileOut = new PrintStream(new FileOutputStream("/Users/laurenpalega/Documents/project/taxify/taxify_output.txt", false));
+            PrintStream fileOut = new PrintStream(
+                new FileOutputStream("taxify_output.txt", false)
+            );
             System.setOut(fileOut);
-            System.setErr(fileOut); // redirect error output
+            System.setErr(fileOut);
         } catch (FileNotFoundException e) {
-            System.err.println("Could not redirect output to file: " + e.getMessage());
+            e.printStackTrace();
         }
         
         //Declare a list of users.
@@ -39,21 +41,21 @@ public class TestProgram {
         //Instantiate at least 15 users. (adding them to list "users")
         int usersize = 15;  
 
-        users.add(new User(1, "John", "Smith", 'M', LocalDate.of(1968, 9, 13)));  
-        users.add(new User(2, "Leonardo", "DiCaprio", 'M', LocalDate.of(1974, 11, 11)));   
-        users.add(new User(3, "Will", "Smith", 'M', LocalDate.of(1968, 9, 25)));  
-        users.add(new User(4, "Angelina", "Jolie", 'F', LocalDate.of(1975, 6, 4)));  
-        users.add(new User(5, "Christian", "Bale", 'M', LocalDate.of(1974, 1, 30)));  
-        users.add(new User(6, "Frank", "Sinatra", 'M', LocalDate.of(1915, 12, 12)));   
-        users.add(new User(7, "Nina", "Dobrev", 'F', LocalDate.of(1989, 1, 9)));   
-        users.add(new User(8, "Jackie", "Chan", 'M', LocalDate.of(1954, 4, 7))); 
-        users.add(new User(9, "Morgan", "Freeman", 'M', LocalDate.of(1937, 6, 1)));  
-        users.add(new User(10, "Audrey", "Hepburn", 'F', LocalDate.of(1929, 5, 4)));  
-        users.add(new User(11, "Lily-Rose", "Depp", 'F', LocalDate.of(1999, 5, 27)));  
-        users.add(new User(12, "Johnny", "Depp", 'M', LocalDate.of(1963, 6, 9)));  
-        users.add(new User(13, "Tom", "Cruise", 'M', LocalDate.of(1962, 7, 3)));  
-        users.add(new User(14, "Jennifer", "Lopez", 'F', LocalDate.of(1969, 7, 24)));  
-        users.add(new User(15, "Britney", "Spears", 'F', LocalDate.of(1981, 12, 2)));  
+        users.add(new User(1, "John", "Smith", 'M', LocalDate.of(1968, 9, 13), ApplicationLibrary.randomLocation()));  
+        users.add(new User(2, "Leonardo", "DiCaprio", 'M', LocalDate.of(1974, 11, 11), ApplicationLibrary.randomLocation()));   
+        users.add(new User(3, "Will", "Smith", 'M', LocalDate.of(1968, 9, 25), ApplicationLibrary.randomLocation()));  
+        users.add(new User(4, "Angelina", "Jolie", 'F', LocalDate.of(1975, 6, 4), ApplicationLibrary.randomLocation()));  
+        users.add(new User(5, "Christian", "Bale", 'M', LocalDate.of(1974, 1, 30), ApplicationLibrary.randomLocation()));  
+        users.add(new User(6, "Frank", "Sinatra", 'M', LocalDate.of(1915, 12, 12), ApplicationLibrary.randomLocation()));   
+        users.add(new User(7, "Nina", "Dobrev", 'F', LocalDate.of(1989, 1, 9), ApplicationLibrary.randomLocation()));   
+        users.add(new User(8, "Jackie", "Chan", 'M', LocalDate.of(1954, 4, 7), ApplicationLibrary.randomLocation())); 
+        users.add(new User(9, "Morgan", "Freeman", 'M', LocalDate.of(1937, 6, 1), ApplicationLibrary.randomLocation()));  
+        users.add(new User(10, "Audrey", "Hepburn", 'F', LocalDate.of(1929, 5, 4), ApplicationLibrary.randomLocation()));  
+        users.add(new User(11, "Lily-Rose", "Depp", 'F', LocalDate.of(1999, 5, 27), ApplicationLibrary.randomLocation()));  
+        users.add(new User(12, "Johnny", "Depp", 'M', LocalDate.of(1963, 6, 9), ApplicationLibrary.randomLocation()));  
+        users.add(new User(13, "Tom", "Cruise", 'M', LocalDate.of(1962, 7, 3), ApplicationLibrary.randomLocation()));  
+        users.add(new User(14, "Jennifer", "Lopez", 'F', LocalDate.of(1969, 7, 24), ApplicationLibrary.randomLocation()));  
+        users.add(new User(15, "Britney", "Spears", 'F', LocalDate.of(1981, 12, 2), ApplicationLibrary.randomLocation()));  
         
         System.out.println("\n" + "----------------------------------TAXIFY------------------------------------------");
         System.out.println("\n---------------Catelog of Our Available Services-----------------");

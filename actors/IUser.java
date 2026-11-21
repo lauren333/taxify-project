@@ -2,10 +2,10 @@ package actors;
 import java.time.LocalDate;
 
 import core.ITaxiCompany;
+import navigation.ILocation;
 import services.IService;
 
 public interface IUser {
-
     public int getId();
     public String getFirstName();
     public String getLastName();
@@ -24,5 +24,7 @@ public interface IUser {
     public boolean isAllowedToShareFlag();
     public boolean isFemale();
     public boolean isChild();
-    public void requestMicroMobilityService(); 
+    public void requestMicroMobilityService();
+    public ILocation getLocation();
+    public void setLocation(ILocation location);
 }

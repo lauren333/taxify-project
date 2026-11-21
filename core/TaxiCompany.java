@@ -60,10 +60,20 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         // return total services
     }
         
+    // @Override
+    // public void arrivedAtPickupLocation(IVehicle vehicle) {
+    //     // notify the observer a vehicle arrived at the pickup location
+    //     notifyObserver(vehicle.getClass().getSimpleName() + " " + vehicle.getId() + " arrived at pickup location " + vehicle.getService().getUser().getId());
+    // }
+
     @Override
     public void arrivedAtPickupLocation(IVehicle vehicle) {
-        // notify the observer a vehicle arrived at the pickup location
-        notifyObserver(vehicle.getClass().getSimpleName() + " " + vehicle.getId() + " arrived at pickup location " + vehicle.getService().getUser().getId());
+        IService service = vehicle.getService();
+        IUser pickedUp = (service instanceof SharedService)
+            ? ((SharedService) service).getPickupUser()
+            : service.getUser();
+        notifyObserver(vehicle.getClass().getSimpleName() + " " + vehicle.getId()
+            + " arrived at pickup location " + pickedUp.getId());
     }
 
     @Override
@@ -73,6 +83,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         if (service == null)
         {
             System.out.println(vehicle.getStatus() + "ID: " + vehicle.getId());
+            return;
         }            
         int user = service.getUser().getId();
         int userIndex = findUserIndex(user);
@@ -97,7 +108,13 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     
     @Override
     public void arrivedAtDropoffLocation2(IMicroMobilityVehicle microMobilityVehicle) {
-        IService service = microMobilityVehicle.getService();       
+        IService service = microMobilityVehicle.getService(); 
+        
+        if (service == null) {
+            System.out.println("DEBUG: micro-mobility drop-off with no service, " + microMobilityVehicle.getClass().getSimpleName() + " ID: " + microMobilityVehicle.getId());
+            return;
+        } 
+                 
         int user = service.getUser().getId();
         int userIndex = findUserIndex(user);
     
@@ -256,7 +273,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         //assign and reserve MMvehicle 
         this.microMobilityVehicles.get(closestMMVehicleIndex).reserve(service); 
 
-        notifyObserver("User " + this.users.get(requestingUserIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() +
+        notifyObserver("User " + this.users.get(requestingUserIndex).getId() + " requests a " + service.getServiceType() + " from " + service.toString() +
                             ", the ride is assigned to " + this.microMobilityVehicles.get(closestMMVehicleIndex).getClass().getSimpleName() +
                             " " + this.microMobilityVehicles.get(closestMMVehicleIndex).getId() + " at location " + this.microMobilityVehicles.get(closestMMVehicleIndex).getLocation().toString());
 
@@ -302,8 +319,18 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
 
         IVehicle vehicle = this.vehicles.get(vehicleIndex);
 
-        if (!vehicle.isFree() && vehicle.getService().getUser().isAllowedToShareFlag() && !vehicle.isSharing()){
-            return provideSharedService(requestingUsersIndex, origin, destination, vehicle);
+        // Is the current closest vehicle is not free,
+        // and the user is allowed to share (decided by random probability) 
+        // and the vehicle is not already currently shared
+        // then we can create a shared service
+
+        // Provide shared service has two exits: true if all executed, false if the distance was too large to continue with the shared service. 
+        IService current = vehicle.getService();
+        if (!vehicle.isFree() && current.getServiceType().startsWith("Standard") && vehicle.getService().getUser().isAllowedToShareFlag() && !vehicle.isSharing()){
+            if (provideSharedService(user, origin, destination, vehicle)) {
+                return true;   // share worked, execute return true, we exit the method. 
+            }
+            // share was rejected (returned false): no return, so execution continues below
         }
 
         //if (provideSharedService(user, origin, destination)){
@@ -322,9 +349,11 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
             // assign the new service to the vehicle           
         this.vehicles.get(freeVehicleIndex).pickService(service);            
             //updated in sprint 4 to specify type of service
-        notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests a " + service.getServiceType() + " Service from " + service.toString() + ", the ride is assigned to " +
-                        this.vehicles.get(vehicleIndex).getClass().getSimpleName() + " " + this.vehicles.get(vehicleIndex).getId() + " at location " +
-                        this.vehicles.get(vehicleIndex).getLocation().toString());     
+        notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests a " + service.getServiceType()
+            + " from " + service.toString() + ", the ride is assigned to "
+            + this.vehicles.get(freeVehicleIndex).getClass().getSimpleName() + " "
+            + this.vehicles.get(freeVehicleIndex).getId() + " at location "
+            + this.vehicles.get(freeVehicleIndex).getLocation().toString());   
             // update the counter of services          
         this.totalServices++;           
         return true;          
@@ -333,7 +362,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     @Override //new from sprint 4
     public boolean providePinkService(int user, ILocation origin, ILocation destination) {
         int requestingUsersIndex = findUserIndex(user);// Find the user's index in the list
-        int closestFreeFemaleIndex = this.closestVehicle(listOfFreeVehicles(listOfFemaleDrivenVehicles()), destination);
+        int closestFreeFemaleIndex = this.closestVehicle(listOfFreeVehicles(listOfFemaleDrivenVehicles()), origin);
 
         if (closestFreeFemaleIndex == -1){ //// If no female vehicle is available, return false
             notifyObserver("Unable to provide pink service");
@@ -356,7 +385,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     @Override //new from sprint 4
     public boolean provideSilentService(int user, ILocation origin, ILocation destination) {
         int requestingUsersIndex = findUserIndex(user);// Find the user's index in the list
-        int vehicleIndex = this.closestVehicle(listOfFreeVehicles(this.vehicles), destination); //closest free vehicle 
+        int vehicleIndex = this.closestVehicle(listOfFreeVehicles(this.vehicles), origin); //closest free vehicle 
 
         if (vehicleIndex == -1){ //no vehicle is found
             return false;
@@ -377,90 +406,42 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     //new from sprint 4
     @Override
     public boolean provideSharedService(int userId, ILocation origin, ILocation destination, IVehicle vehicle){
-        IUser user = this.users.get(userId);
+        // get the new user, and exisiting service
+        int userIndex = findUserIndex(userId);
+        IUser user = this.users.get(userIndex);
         IService currentService = vehicle.getService(); 
 
-        //is the distance allowed
+        //check if the distance is allowed
         if (ApplicationLibrary.distance(currentService.getDropoffLocation(), destination) > ApplicationLibrary.MAX_SHARED_DISTANCE){ 
             return false;
         }
 
-        //check if currents wants to share, if not false
+        // get current user in service
         IUser currentOccupiedUser = currentService.getUser();
 
         // Create a new service and a shared service
-        IService newService = RideServiceTypeFactory.createStandardService(this.users.get(userId), origin, destination);
-        notifyObserver("User: " + user.getId() + " is requesting a shared from " + newService.toString());
-        SharedService sharedService = RideServiceTypeFactory.createSharedService(currentService, newService);
-        // Mark the  service as started 
+        IService newService = RideServiceTypeFactory.createStandardService(user, origin, destination);
+        notifyObserver("User: " + user.getId() + " is requesting a shared ride from " + newService.toString());
 
+        //combine services into shared service
+        SharedService sharedService = RideServiceTypeFactory.createSharedService(currentService, newService);
+        
+        // Mark the  service as started 
         if (vehicle.getStatus() == VehicleStatus.SERVICE)
             sharedService.updateFirstUserPickedup();
 
+        //assign shared service to vehicle
         vehicle.pickService(sharedService);
-        this.users.get(userId).setService(true);
 
-        notifyObserver("User " + currentOccupiedUser.getId() + " and " +  user.getId() + " are now sharing a ride. " + "From " + sharedService.toString() + ", the ride is assigned to " +
+        // set new user to in service status
+        user.setService(true);
+
+        notifyObserver("User " + currentOccupiedUser.getId() + " accepted to share the ride and now " + "User " + currentOccupiedUser.getId() + " and " +  user.getId() + " are now sharing a ride. " + "From " + sharedService.toString() + ", the ride is assigned to " +
         vehicle.getClass().getSimpleName() + " " + vehicle.getId() + " at location " +
         vehicle.getLocation().toString());
         //update stats
         this.totalServices++;
         return true;
-
-
-
-        // int requestingUsersIndex = findUserIndex(userId); // Find the user's index in the list 
-        // IUser user = this.users.get(requestingUsersIndex); //get user 
-        // int closestVehicleIndex = closestVehicle(this.vehicles, origin); //get index of closest vehicle 
-
-        // if (closestVehicleIndex == -1){  //if no vehicle is found
-        //     return false; 
-        // }
-
-        // IVehicle closestVehicle = this.vehicles.get(closestVehicleIndex);
-        // IService currentService = closestVehicle.getService();
-        // // Vehicle is not currently assigned to any service so cant "share" if no one is there in the first place
-        // if (currentService == null) {
-        //     return false;
-        // }
-        //  // is the vehicle is already sharing? then cant join because theyre already coupled
-        // if (closestVehicle.isSharing()) {
-        //     return false;
-        // }
-        // //is the distance allowed
-        // if (ApplicationLibrary.distance(currentService.getDropoffLocation(), destination) > ApplicationLibrary.MAX_SHARED_DISTANCE){ 
-        //     return false;
-        // }
-        // //check if currents wants to share, if not false
-        // IUser currentOccupiedUser = currentService.getUser();
-        // if (!currentOccupiedUser.isAllowedToShareFlag()) { 
-        //     return false;
-        // } 
-        // // Create a new service and a shared service
-        // IService newService = RideServiceTypeFactory.createStandardService(this.users.get(requestingUsersIndex), origin, destination);
-        // SharedService sharedService = RideServiceTypeFactory.createSharedService(currentService, newService);
-        // // Mark the  service as started 
-
-        // // Allow for shared service if the vehicle is in service or picking someone up since
-        // //since when dropping someone off doesnt make it much of sharing 
-
-        // if (closestVehicle.getStatus() != VehicleStatus.PICKUP)
-        //     sharedService.markSecondaryStarted();
-        // if (closestVehicle.getStatus() == VehicleStatus.SERVICE){
-        //     sharedService.markSecondaryStarted();
-        // }
-            
-        // // Assign the shared service to the vehicle
-        // closestVehicle.pickService(sharedService);
-        // //mark user as in service, true
-        // this.users.get(requestingUsersIndex).setService(true);
-        // //update observer 
-        // notifyObserver("User " + currentOccupiedUser.getId() + " and " +  user.getId() + " are now sharing a ride. " + "From " + sharedService.toString() + ", the ride is assigned to " +
-        // this.vehicles.get(closestVehicleIndex).getClass().getSimpleName() + " " + this.vehicles.get(closestVehicleIndex).getId() + " at location " +
-        // this.vehicles.get(closestVehicleIndex).getLocation().toString());
-        // //update stats
-        // this.totalServices++;
-        // return true;
     }
     
 }

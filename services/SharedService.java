@@ -38,6 +38,29 @@ public class SharedService implements IService { //new from sprint 4
             return this.secondaryService.getUser();
     }
 
+    public IUser getPrimaryUser() {
+        return this.primaryService.getUser();
+    }
+    
+    public IUser getSecondaryUser() {
+        return this.secondaryService.getUser();
+    }
+    
+    // Rider being picked up right now: primary first, then secondary
+    public IUser getPickupUser() {
+        if (this.hasfirstUserPickedup())
+            return this.secondaryService.getUser();
+        return this.primaryService.getUser();
+    }
+
+    public ILocation getPrimaryDropoff() {
+        return this.primaryService.getDropoffLocation();
+    }
+    
+    public ILocation getSecondaryDropoff() {
+        return this.secondaryService.getDropoffLocation();
+    }
+    
     public void updateLeg() {
         this.finishedPrimary = true;
     }

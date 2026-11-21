@@ -16,14 +16,16 @@ public class User implements IUser {
     private LocalDate birthDate;
     private ITaxiCompany company;
     private boolean service;
+    private ILocation location;
 
 
-    public User(int id, String firstName, String lastName, char gender, LocalDate birthDate) {
+    public User(int id, String firstName, String lastName, char gender, LocalDate birthDate, ILocation location) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.birthDate = birthDate;
+        this.location = location; 
         this.service = false;
     }
     
@@ -53,6 +55,16 @@ public class User implements IUser {
     }
 
     @Override
+    public ILocation getLocation(){
+        return this.location; 
+    } 
+
+    @Override
+    public void setLocation(ILocation location){
+        this.location = location; 
+    } 
+
+    @Override
     public boolean getService() {
         return this.service;
     }
@@ -69,28 +81,29 @@ public class User implements IUser {
 
     @Override
     public void requestService() {
-        ILocation origin = ApplicationLibrary.randomLocation();
+        // We randomly assign user location in testprogram simulaiton logic
+        ILocation origin = this.location;
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.provideService(this.id, origin, destination);        
     }
 
     @Override
     public void requestPinkService() {
-        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation origin = this.location;
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.providePinkService(this.id, origin, destination);   
     }
 
     @Override
     public void requestSilentService() {
-        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation origin = this.location;
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.provideSilentService(this.id, origin, destination);    
     }
 
     @Override
     public void requestMicroMobilityService() {
-        ILocation origin = ApplicationLibrary.randomLocation();
+        ILocation origin = this.location;
         ILocation destination = ApplicationLibrary.randomLocation(origin);
         this.company.provideMicroMobilityService(this.id, origin, destination);    
     }
@@ -132,4 +145,4 @@ public class User implements IUser {
         return this.getId() + " " + String.format("%-20s",this.getFirstName() + "  " + this.getLastName() + "  " + this.getGender() + "  " + this.getBirthDate());
         //ORIGINAL CODE: return this.getId() + " " + String.format("%-20s",this.getFirstName() + " " + this.getLastName());
     }
-}
+}  

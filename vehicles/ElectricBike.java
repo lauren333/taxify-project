@@ -10,7 +10,7 @@ public class ElectricBike extends MicroMobilityVehicle {
 
     @Override
     public void startRide() {
-        if (this.batteryLevel <= 25.0) {
+        if (this.batteryLevel <= 50.0) {
             System.err.println("Electric Bike " + this.getId() + " will start ride after charging: Battery too low (" + this.batteryLevel + "%).");
             this.chargeBattery();
         }

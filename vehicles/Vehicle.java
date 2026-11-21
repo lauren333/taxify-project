@@ -1,6 +1,6 @@
 package vehicles;
 import java.util.List;
-
+  
 import actors.IDriver;
 import core.ApplicationLibrary;
 import core.ITaxiCompany;
@@ -217,20 +217,44 @@ public abstract class Vehicle implements IVehicle {
 
     @Override
     public void move() {
-        // get the next location from the driving route
-        this.location = this.route.getNextLocation(); 
-            
-        // if the route has more locations the vehicle continues its route, otherwise the vehicle has arrived to a pickup or drop off location
+        // Move Vehicle to next location (wether or wether not it has a ride in service)
+        if (this.route.hasLocations()){
+                this.location = this.route.getNextLocation(); 
+        }
+        
+        // Move the people inside of the vehcile if a service is in progress
+        if (this.service != null){
+            // Non shared service
+            if (!isSharedService(this.service)){
+                if (this.status == VehicleStatus.SERVICE){
+                    this.service.getUser().setLocation(this.location);
+                } 
+            // Shared Service 
+            } else {
+                SharedService shared = (SharedService) this.service; 
+                // If the first person is picked up and they havent been dropped off yet move their location 
+                // (until primary trip aka dropping her off is complete) 
+                if (shared.hasfirstUserPickedup() && !shared.isPrimaryComplete()) {
+                    shared.getPrimaryUser().setLocation(this.location);
+                }
+                // and if both are picked up then move the second person too. 
+                // this stops when we we move into the !haslocations case 
+                if (shared.bothUsersPickedUp) {
+                    shared.getSecondaryUser().setLocation(this.location);
+                }
+            }    
+        }   
+        // otherwise the vehicle has arrived to a pickup or drop off location
         if (!this.route.hasLocations()) {
+            // If there is no active service, the vehicle can proceed on a random route
             if (this.service == null) {
-                // the vehicle continues its random route
                 this.destination = ApplicationLibrary.randomLocation(this.location);
                 this.route = new Route(this.location, this.destination);
+            // Otherwise we need to pick up or drop off 
             } else {
-                // check if the vehicle has arrived to a pickup or drop off location
                 ILocation origin = this.service.getPickupLocation();
                 ILocation destination = this.service.getDropoffLocation();
-
+                // Shared Service Logic
                 if (isSharedService(this.service)){
                     SharedService shared = (SharedService) this.service;
                     if (shared.bothUsersPickedUp && this.location.getX() == destination.getX() && this.location.getY() == destination.getY()){
@@ -238,8 +262,7 @@ public abstract class Vehicle implements IVehicle {
                         return;
                     }
                 }
-
-
+                // Confirm if arrival or dropoff via coordinates (check this vecticals location and orgin/destination)
                 if (this.location.getX() == origin.getX() && this.location.getY() == origin.getY()) {
                     //System.out.println(this.id + "Arrived at Pickup Location");
                     notifyArrivalAtPickupLocation();
@@ -254,15 +277,21 @@ public abstract class Vehicle implements IVehicle {
     @Override
     public double calculateCost() {
         if (isSharedService(this.service))
-            return .5 * this.service.calculateDistance();
+            return this.service.calculateDistance();
         return this.service.calculateDistance();
     }
 
+    private int pickupUserId() {
+        if (this.service instanceof SharedService)
+            return ((SharedService) this.service).getPickupUser().getId();
+        return this.service.getUser().getId();
+    }
+
     @Override
-    public String toString() { //updated in sprint 4 to show whos driving 
+    public String toString() {
         return this.id + ": " + driver.getFirstName().charAt(0) + ". " + driver.getLastName() + " at " + this.location + " driving to " + this.destination +
-               ((this.status == VehicleStatus.FREE) ? " is free with path " + this.route.toString(): ((this.status == VehicleStatus.PICKUP) ?
-               " to pickup user " + this.service.getUser().getId() : " in service "));
-    }   
+            ((this.status == VehicleStatus.FREE) ? " is free with path " + this.route.toString() : ((this.status == VehicleStatus.PICKUP) ?
+            " to pickup user " + pickupUserId() : " in service "));
+    }
     
 }

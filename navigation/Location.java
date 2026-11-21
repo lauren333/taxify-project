@@ -23,5 +23,4 @@ public class Location implements ILocation {
     public String toString() {
         return "(" + this.getX() + "," + this.getY() + ")";
     }
-}
-
+} 

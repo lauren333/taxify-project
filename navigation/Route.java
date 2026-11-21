@@ -5,6 +5,8 @@ import java.util.List;
 public class Route implements IRoute {
     private List<ILocation> route;
     
+    // A list of coordinates (X,/) from the current location to the destination 
+    // That we must travel 
     public Route(ILocation location, ILocation destination) {
         //this.route = setRoute(location, destination);
         if (location.getX() == destination.getX() && location.getY() == destination.getY()){
@@ -16,11 +18,15 @@ public class Route implements IRoute {
         }
     }
     
+    // If list not empty, return true
+    // Aka if we are not at the destination, return true
     @Override
     public boolean hasLocations() {
         return !this.route.isEmpty();
     }
-            
+         
+    // Read next item in the route list (the next step to move to)  
+    // Then we remove it
     @Override
     public ILocation getNextLocation() {
         ILocation location = this.route.get(0);
@@ -41,6 +47,8 @@ public class Route implements IRoute {
            return route;        
     }
     
+    // Method that constructs the list of coordinates from the start location to the ending location 
+    // Builds the route/ trip vehicle follows
     private static List<ILocation> setRoute(ILocation location, ILocation destination) { //we can change this to make it like diagnals 
         List<ILocation> route = new ArrayList<ILocation>();
         
