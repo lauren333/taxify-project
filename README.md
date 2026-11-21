@@ -28,9 +28,15 @@ The simulation assigns the nearest available vehicle or micro-mobility unit on a
 - Scooter: 0.15 per block + 1.00 reservation fee
 - 20% discount for Shared rides
 
+#### Micro-Mobility Battery Management
+- Electric Bikes: Must have more than 50% battery charge to start a ride. If the battery level is 50% or below, the bike automatically recharges to 100% before the ride begins.
+- Electric Scooters: Automatically recharge according to the implemented battery and ride-count conditions.
+- Battery levels decrease by 25% after each completed micro-mobility ride.
+- The system tracks battery levels and completed rides for each micro-mobility vehicle.
+
 ## Sprint Documentation
 
-This project was developed over five iterative sprints. The diagrams below illustrate the evolution of the system architecture and design throughout the development process.
+This project was developed over five iterative sprints. The diagrams below illustrate the evolution of the system architecture and design throughout the development process. I added an additional sprint, to go back and correct some logical errors such as how users location was handeled and to add a react frontend and sprinboot backend to create a grahical interface to view the simulation. 
 
 ---
 
@@ -93,4 +99,3 @@ This project was developed over five iterative sprints. The diagrams below illus
 <p align="center">
   <img src="uml_documentation/Sprint5_UML_class.png" width="800">
 </p>
-

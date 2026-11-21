@@ -82,30 +82,57 @@ public class ApplicationSimulator implements IApplicationSimulator, IObserver {
     }
 
     @Override
-    public void requestService() {  //OUR CODE SPRINT 3//      
-        // finds an available user and requests a service to the Taxi Company
-        for (IUser user : this.users) { 
-            if (user.getService() == true){ 
-                continue; 
-            }
-            if (user.getPinkServiceEligibility() && ApplicationLibrary.rand() % 3 == 0){
-                user.requestPinkService();
-                break;
-            } 
-                          
-            if (ApplicationLibrary.rand() % 5 == 0){
-                 user.requestSilentService();
-                 break;
-             
-           }
-            if (ApplicationLibrary.rand() % 3 == 0){
-                user.requestMicroMobilityService();
-                break;
-            } 
+    public void requestService() {
+        // Create an array of type users, and add users who are free.
+        List<IUser> freeUsers = new java.util.ArrayList<IUser>();
+        for (IUser user : this.users) {
+            if (!user.getService()) freeUsers.add(user);
+        }
+        // If empty skip this round, exit the method to avoid divison by zero
+        if (freeUsers.isEmpty()) return;
+
+        // Divide by number of free users, take the remainder (using modulo)
+        // remainder after dividing by n is always between 0 and n - 1. 
+        IUser user = freeUsers.get(ApplicationLibrary.rand() % freeUsers.size());   // assumes rand() >= 0
+
+        // service types are decided probabilistically
+        if (user.getPinkServiceEligibility() && ApplicationLibrary.rand() % 3 == 0) {
+            user.requestPinkService();
+        } else if (ApplicationLibrary.rand() % 5 == 0) {
+            user.requestSilentService();
+        } else if (ApplicationLibrary.rand() % 3 == 0) {
+            user.requestMicroMobilityService();
+        } else {
             user.requestService();
-            break;
         }
     }
+
+    // Old logic for how rides were requested, only requests rides for the first users in the list typically. 
+    // @Override
+    // public void requestService() {  //OUR CODE SPRINT 3//      
+    //     // finds an available user and requests a service to the Taxi Company
+    //     for (IUser user : this.users) { 
+    //         if (user.getService() == true){ 
+    //             continue; 
+    //         }
+    //         if (user.getPinkServiceEligibility() && ApplicationLibrary.rand() % 3 == 0){
+    //             user.requestPinkService();
+    //             break;
+    //         } 
+                          
+    //         if (ApplicationLibrary.rand() % 5 == 0){
+    //              user.requestSilentService();
+    //              break;
+             
+    //        }
+    //         if (ApplicationLibrary.rand() % 3 == 0){
+    //             user.requestMicroMobilityService();
+    //             break;
+    //         } 
+    //         user.requestService();
+    //         break;
+    //     }
+    // }
     
     @Override
     public int getTotalServices() { //GIVEN CODE SPRINT 3//      

@@ -28,4 +28,3 @@ public interface IVehicle extends IMovable {
     public boolean isSharing();
     public VehicleStatus getStatus();
 }
- 

@@ -10,6 +10,7 @@ public interface ITaxiCompany {
     public void arrivedAtPickupLocation2(IMicroMobilityVehicle microMobilityVehicle);  
     public void arrivedAtDropoffLocation(IVehicle vehicle); //new from sprint 2
     public void arrivedAtDropoffLocation2(IMicroMobilityVehicle microMobilityVehicle);  
+    public void reportBatteryLevel(IMicroMobilityVehicle microMobilityVehicle); // for the web dashboard
     public void addObserver(IObserver observer); 
     public void notifyObserver(String message);
     public boolean provideService(int user, ILocation origin, ILocation destination); //updated in sprint 4
