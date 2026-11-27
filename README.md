@@ -74,6 +74,17 @@ E-bike €0.25 / block · E-scooter €0.15 / block · €1.00 reservation fee f
 
 <br>
 
+## Backend and Dashboard
+
+The Spring Boot backend runs the simulation, and the React frontend displays the activity. They communicate through a REST API.
+
+1. **Backend runs the simulation:** `SimulationService.java` runs `TaxifySimulation.java` on a single-threaded `ScheduledExecutorService`. Each tick calls `step()`, which advances the simulation and generates a new ride request every third tick. Access is `synchronized`, so the scheduler and incoming HTTP requests never modify the simulation at the same time.
+2. **Frontend sends commands:** The dashboard calls `/api/start`, `/api/pause` and `/api/step`, which `TaxifyController.java` passes to `SimulationService.java`. Changing the speed restarts the scheduled task with a new interval.
+3. **Backend returns the current state:** `/api/state` returns the full simulation as JSON: vehicles, users, statistics and the latest Observer events.
+4. **Frontend displays the state:** `useSimulation.js` polls `/api/state` several times a second and animates vehicle movement between ticks. `deriveDashboard.js` then turns each snapshot into map markers, route lines and passenger-vehicle assignments.
+
+<br> 
+
 ## Development history
 This project was developed over six iterative sprints. The diagrams below illustrate the evolution of the system architecture and design throughout the development process.
   
