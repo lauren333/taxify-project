@@ -29,7 +29,7 @@ The system was designed in UML and developed over six iterative sprints.
   <a href="#ride-types-and-services">Ride Types &amp; Services</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#backend-and-dashboard">Backend &amp; Dashboard</a> ·
-  <a href="#development-history">Development History</a> ·
+  <a href="#development-Progress">Development Progress</a> ·
   <a href="#setup-and-execution">Setup &amp; Execution</a>
 </p>
 
@@ -96,7 +96,7 @@ The Spring Boot backend runs the simulation, and the React frontend displays the
 
 <br> 
 
-## Development history
+## Development Progress
 This project was developed over six iterative sprints. The diagrams below illustrate the evolution of the system architecture and design throughout the development process.
   
 <details>
