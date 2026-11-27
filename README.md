@@ -22,16 +22,21 @@ The system was designed in UML and developed over six iterative sprints.
 
 <br>
 
-<br>
+--- 
 
 <p align="center">
+  Table of Contents:<br>
   <a href="#how-the-simulation-works">Simulation</a> ·
   <a href="#ride-types-and-services">Ride Types &amp; Services</a> ·
   <a href="#architecture">Architecture</a> ·
   <a href="#backend-and-dashboard">Backend &amp; Dashboard</a> ·
-  <a href="#development-Progress">Development Progress</a> ·
+  <a href="#development-progress">Development Progress</a> ·
   <a href="#setup-and-execution">Setup &amp; Execution</a>
 </p>
+
+--- 
+
+<br>
 
 ## How the simulation works
 
