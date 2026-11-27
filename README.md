@@ -22,6 +22,17 @@ The system was designed in UML and developed over six iterative sprints.
 
 <br>
 
+<br>
+
+<p align="center">
+  <a href="#how-the-simulation-works">Simulation</a> ·
+  <a href="#ride-types-and-services">Ride Types &amp; Services</a> ·
+  <a href="#architecture">Architecture</a> ·
+  <a href="#backend-and-dashboard">Backend &amp; Dashboard</a> ·
+  <a href="#development-history">Development History</a> ·
+  <a href="#setup-and-execution">Setup &amp; Execution</a>
+</p>
+
 ## How the simulation works
 
 The simulation follows a continuous ride-request and allocation process:
