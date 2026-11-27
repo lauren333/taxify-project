@@ -29,6 +29,7 @@ public class TaxifySimulation implements IObserver {
     private TaxiCompany company;
     private ApplicationSimulator simulator;
 
+    // the updates in console
     private final LinkedList<Map<String, Object>> events = new LinkedList<>();
     private int nextEventId = 0;   // gives each dashboard event a unique id
 
