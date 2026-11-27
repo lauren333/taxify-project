@@ -35,35 +35,23 @@ The simulation follows a continuous ride-request and allocation process:
 
 ## Ride Types and Services
 
-The simulation supports two types of rides: **vehicle rides** and **micro-mobility rides**. Each has different service options, pricing and behaviour.
+The simulation supports **vehicle rides** (taxis and shuttles) and **micro-mobility rides** (e-bikes and e-scooters), each with its own services, pricing and behaviour.
 
-### 1. Vehicle Rides — Taxis and Shuttles
+**Vehicle rides:** 
 
-Four service types:
+Taxi €2.00 / block · Shuttle €1.50 / block
+- **Standard Service:** regular individual ride.
+- **Shared Service:** a second passenger can join an ongoing ride if both accept, with different destinations allowed. Shared rides get a 20% discount.
+- **Pink Service:** for women and children, driven by women.
+- **Silent Service:** quiet ride.
 
-- **Standard:** Regular individual ride.
-- **Shared:** A second passenger can join an ongoing ride if both passengers accept. They can have different destinations. 
-- **Pink:** For women and children, driven by women. 
-- **Silent:** Quiet ride. 
+**Micro-mobility rides:** 
 
-**Fares:**
-- **Taxi:**  €2.00 / block 
-- **Shuttle:** €1.50 / block
+E-bike €0.25 / block · E-scooter €0.15 / block · €1.00 reservation fee for both types 
+- **Standard Service only:** the user reserves an available vehicle and walks to it to start the ride.
+- Each ride uses 25% battery. E-bikes need more than 50% to start, otherwise they recharge to 100%. E-scooters recharge after three rides or at 50% or below.
 
-Shared rides receive a 20% discount.
-
-### 2. Micro-mobility Rides — E-bikes and E-scooters
-
-- **Standard rides only:** Users reserve an available vehicle and walk to its location to begin their service.
-
-**Fares:**
-- **E-bike:** €0.25 / block + €1.00 reservation fee 
-- **E-scooter:** €0.15 / block + €1.00 reservation fee 
-
-**Battery Management:**
-- Each ride consumes 25% battery.
-- E-bikes: require more than 50% battery to start; otherwise, they recharge to 100%.
-- E-scooters: recharge after three rides or when battery reaches 50% or below.
+<br>
 
 ## Architecture 
 - **Company as coordinator:** `TaxiCompany` manages users and vehicles, assigns services and receives vehicle updates.
