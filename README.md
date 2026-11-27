@@ -18,7 +18,7 @@ The system was designed in UML and developed over six iterative sprints.
   <img src="https://img.shields.io/badge/Vite-3B4B55?style=flat-square&logo=vite&logoColor=white&color=3B4B55">
   <img src="https://img.shields.io/badge/REST_API-3B4B55?style=flat-square&color=3B4B55">
   <img src="https://img.shields.io/badge/JSON-3B4B55?style=flat-square&logo=json&logoColor=white&color=3B4B55">
-</p>. 
+</p> 
 
 <br>
 
