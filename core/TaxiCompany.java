@@ -1,5 +1,5 @@
 package core;
-import java.util.List;
+
 
 import actors.IUser;
 import navigation.ILocation;
@@ -10,7 +10,11 @@ import vehicles.IMicroMobilityVehicle;
 import vehicles.IVehicle;
 import vehicles.VehicleStatus;
 
+import java.util.List;
 import java.util.ArrayList; //sprint 4
+// sprint 6: used to create structured data, used in dashboard 
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 //SPRINT 3: NEW CLASS 
 
@@ -24,6 +28,7 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     //IT ALLOWS DIFFERENT CLASSES TO RESPOND TO UPDATES IN THE TaxiCompany CLASS
     //taxi company is the subject and the vehciles are the observers
     private IObserver observer;
+
     
     //public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles) {
     public TaxiCompany(String name, List<IUser> users, List<IVehicle> vehicles, List<IMicroMobilityVehicle> microMobilityVehicles) {
@@ -138,6 +143,37 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
     public void notifyObserver(String message) {
         // send a message to the observer
         this.observer.updateObserver(message);
+    }
+
+    // sprint 6: Sends the details of a request to the observer, used by the web dashboard
+    private void recordRequest(IUser user, IService service, String serviceType, String vehicleType, int vehicleId) {
+        Map<String, Object> event = new LinkedHashMap<>();
+        event.put("type", "request");
+        event.put("userId", user.getId());
+        event.put("service", serviceType.replace("Service", "").trim()); // "Standard Service" -> "Standard"
+        event.put("from", formatLocation(service.getPickupLocation()));
+        event.put("to", formatLocation(service.getDropoffLocation()));
+        event.put("isShared", serviceType.startsWith("Shared"));
+        event.put("vehicleType", vehicleType);
+        event.put("vehicleId", vehicleId);
+        // update record -> the observer
+        this.observer.recordEvent(event);
+    }
+
+    private String formatLocation(ILocation location) {
+        return "(" + location.getX() + ", " + location.getY() + ")";
+    }
+
+    // sprint 6: sends a vehicles new battery level to the observer, used by the web dashboard
+    @Override
+    public void reportBatteryLevel(IMicroMobilityVehicle microMobilityVehicle) {
+        Map<String, Object> event = new LinkedHashMap<>();
+        event.put("type", "battery");
+        event.put("vehicleType", microMobilityVehicle.getClass().getSimpleName());
+        event.put("vehicleId", microMobilityVehicle.getId());
+        event.put("batteryLevel", microMobilityVehicle.getBatteryLevel());
+        // update record -> the observer
+        this.observer.recordEvent(event);
     }
     
     private int findUserIndex(int id) {
@@ -276,7 +312,8 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         notifyObserver("User " + this.users.get(requestingUserIndex).getId() + " requests a " + service.getServiceType() + " from " + service.toString() +
                             ", the ride is assigned to " + this.microMobilityVehicles.get(closestMMVehicleIndex).getClass().getSimpleName() +
                             " " + this.microMobilityVehicles.get(closestMMVehicleIndex).getId() + " at location " + this.microMobilityVehicles.get(closestMMVehicleIndex).getLocation().toString());
-
+        // sprint 6: update observer
+        recordRequest(user, service, service.getServiceType(), this.microMobilityVehicles.get(closestMMVehicleIndex).getClass().getSimpleName(), this.microMobilityVehicles.get(closestMMVehicleIndex).getId());
         // update the counter of services I NEED TO ADD LOGIC FOR THIS I ASSUME         
         this.totalServices++;            
         return true; 
@@ -344,17 +381,19 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
 
         // update the user status
         this.users.get(requestingUsersIndex).setService(true);
-            // create a service with the user, the pickup and the drop-off location
+        // create a service with the user, the pickup and the drop-off location
         IService service = RideServiceTypeFactory.createStandardService(this.users.get(requestingUsersIndex), origin, destination);
-            // assign the new service to the vehicle           
+        // assign the new service to the vehicle           
         this.vehicles.get(freeVehicleIndex).pickService(service);            
-            //updated in sprint 4 to specify type of service
+        //updated in sprint 4 to specify type of service
         notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests a " + service.getServiceType()
             + " from " + service.toString() + ", the ride is assigned to "
             + this.vehicles.get(freeVehicleIndex).getClass().getSimpleName() + " "
             + this.vehicles.get(freeVehicleIndex).getId() + " at location "
             + this.vehicles.get(freeVehicleIndex).getLocation().toString());   
-            // update the counter of services          
+        // sprint 6: notify obsever 
+        recordRequest(this.users.get(requestingUsersIndex), service, service.getServiceType(),this.vehicles.get(freeVehicleIndex).getClass().getSimpleName(),this.vehicles.get(freeVehicleIndex).getId());
+        // update the counter of services          
         this.totalServices++;           
         return true;          
     }
@@ -377,6 +416,8 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests " + pinkService.getServiceType() + " from " + pinkService.toString() + ", the ride is assigned to " +
                             this.vehicles.get(closestFreeFemaleIndex).getClass().getSimpleName() + " " + this.vehicles.get(closestFreeFemaleIndex).getId() + " at location " +
                             this.vehicles.get(closestFreeFemaleIndex).getLocation().toString());
+        // sprint 6: update observer 
+        recordRequest(this.users.get(requestingUsersIndex), pinkService, pinkService.getServiceType(),this.vehicles.get(closestFreeFemaleIndex).getClass().getSimpleName(),this.vehicles.get(closestFreeFemaleIndex).getId());       
         // update the counter of services          
         this.totalServices++;
         return true;
@@ -398,6 +439,8 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
         notifyObserver("User " + this.users.get(requestingUsersIndex).getId() + " requests " + silentService.getServiceType() + " from " + silentService.toString() + ", the ride is assigned to " +
                             this.vehicles.get(vehicleIndex).getClass().getSimpleName() + " " + this.vehicles.get(vehicleIndex).getId() + " at location " +
                             this.vehicles.get(vehicleIndex).getLocation().toString());
+        //sprint 6: dashboard info
+        recordRequest(this.users.get(requestingUsersIndex), silentService, silentService.getServiceType(),this.vehicles.get(vehicleIndex).getClass().getSimpleName(),this.vehicles.get(vehicleIndex).getId());
         //update services amount
         this.totalServices++;
         return true;
@@ -432,6 +475,9 @@ public class TaxiCompany implements ITaxiCompany, ISubject {
 
         //assign shared service to vehicle
         vehicle.pickService(sharedService);
+
+        // sprint 6: newService holds this users own pickup and drop-off
+        recordRequest(user, newService, sharedService.getServiceType(), vehicle.getClass().getSimpleName(), vehicle.getId());
 
         // set new user to in service status
         user.setService(true);
