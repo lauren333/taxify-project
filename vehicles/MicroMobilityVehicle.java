@@ -207,9 +207,10 @@ public abstract class MicroMobilityVehicle implements IMicroMobilityVehicle {
     @Override
     public String toString() { //updated in sprint 4 to show whos driving 
         return (this.status == VehicleStatus.SERVICE)
-            ? this.id + ": " + service.getUser().getFirstName() + " " + service.getUser().getLastName() + ", User " + service.getUser().getId() + ", at " + this.location + " is driving themself to " + this.destination
-            : (this.status == VehicleStatus.PICKUP)
-                ? this.id + ": reserved for user " + service.getUser().getId() + ", " + service.getUser().getFirstName() + " " + service.getUser().getLastName()
-                : this.id + ": vehicle is idle at " + this.location;
-        }   
+        ? this.id + ": " + service.getUser().getFirstName() + " " + service.getUser().getLastName() + ", User " + service.getUser().getId() + ", at " + this.location + " is driving themself to " + this.destination
+        : (this.status == VehicleStatus.PICKUP)
+            ? this.id + ": reserved for user " + service.getUser().getId() + ", " + service.getUser().getFirstName() + " " + service.getUser().getLastName()
+            : this.id + ": vehicle is idle at " + this.location;
+    }   
+
 }
